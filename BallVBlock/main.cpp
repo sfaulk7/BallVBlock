@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "raylib.h"
+#include "Matrix3.h"
 
 int main(void)
 {
