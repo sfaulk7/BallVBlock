@@ -1,9 +1,17 @@
 #pragma once
-#include "Vector2.h"
+
+/// <summary>
+	/// Summary
+	/// </summary>
+	/// <returns></returns>
 
 namespace MathLibrary 
 {
 	class Matrix3 
+	{
+
+	};
+	class Vector2
 	{
 
 	};
@@ -16,10 +24,7 @@ protected:
 
 
 public:
-	/// <summary>
-	/// Getters and Setters
-	/// </summary>
-	/// <returns></returns>
+	//Getters and Setters
 	MathLibrary::Matrix3 GetLocalRotation();
 	void SetLocalRotation();
 
@@ -39,12 +44,16 @@ public:
 	Vector2 GetLocalRotationAngle();
 	Vector2 GetGlobalRotationAngle();
 
+	//Matrix and Vector manipulation
 	void Translate(MathLibrary::Vector2 direction);
 	void Translate(float x, float y);
 	void Rotate(float radians);
+
+	//Parent child relationship advise
 	void AddChild(Transform2D child);
 	void RemoveChild(Transform2D child);
 
+	//Update
 	void UpdateTransforms();
 
 
@@ -57,10 +66,10 @@ private:
 	MathLibrary::Matrix3 m_localRotation;
 	MathLibrary::Matrix3 m_localScale;
 
-	Actor m_owner;
+	Actor* m_owner;
 
-	Transform2D m_parent;
-	Transform2D[] m_children;
+	Transform2D* m_parent;
+	DynamicArray<Transform2D*> m_children;
 
 	float m_localRotationAngle;
 	
