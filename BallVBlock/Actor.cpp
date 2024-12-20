@@ -3,18 +3,21 @@
 #include "math.h"
 #include "Vector2.h"
 
+Actor::Actor()
+{
+
+}
+
+
 void Actor::Instantiate(
 
 	Actor actor,
-	Transform2D parent = null,
-	Vector2 position = new Vector2(),
+	Transform2D parent = nullptr,
+	MathLibrary::Vector2 position = MathLibrary::Vector2(),
 	float rotation = 0,
 	const char* m_name = "Actor")
 {
-	actor.Transform.LocalPosition = position;
-	actor.Transform.Rotate(rotation);
 	
-
 }
 
 void Actor::Destroy(Actor actor)

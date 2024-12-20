@@ -15,8 +15,10 @@ protected:
 
 public:
 	
+	Actor();
+	~Actor();
 	const char* Name();
-	static void Instantiate();
+	virtual void Instantiate();
 	void Destroy(Actor other);
 	virtual void OnEnable();
 	virtual void OnDisable();
