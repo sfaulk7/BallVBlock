@@ -1,56 +1,63 @@
 #include "Scene.h"
 #include <iostream>
 #include "Actor.h"
+#include "list"
 
-
-
-Scene::Scene()
+class Scene
 {
-	m_actors = new Actor * [0];
-}
+public:
+	//Actor** m_actors = new Actor * [0];
+	//List<Actor> _actors;
+	std::list<Actor> _actors;
 
-Scene::~Scene()
-{
-	delete m_actors;
-}
-void Scene::AddActor(Actor other)
-{
-	if (!m_actors.Contains(actor))
-		m_actors.Add(actor);
-}
-
-bool Scene::RemoveActor(Actor other)
-{
-	//return m_actors*->Remove(actor);
-	return m_actors.Remove(actor);
-	
-}
-
-void Scene::Start()
-{
-	// Two pointers for a list
-	Actor** m_actors;
-}
-
-void Scene::Update()
-{
-	for (int i = 0; i < m_actors.Count; i++)
+	Scene()
 	{
-		Actor actor = m_actors[i];
-
-		if (!actor.Started)
-			actor.Start();
-
-		actor.Update(deltaTime);
-		if (actor.Collider != null)
-			actor.Collider.Draw();
+		//Actor** m_actors = new Actor * [0];
 	}
-}
 
-void Scene::End()
-{
-	for each (Actor actor in m_actors)
+	~Scene()
 	{
-		actor.End();
+		delete m_actors;
 	}
-}
+	void AddActor(Actor actor)
+	{
+		if (!m_actors.Contains(actor))
+			m_actors.Add(actor);
+	}
+
+	bool RemoveActor(Actor actor)
+	{
+		//return m_actors*->Remove(actor);
+		return m_actors.Remove(actor);
+
+	}
+
+	void Start()
+	{
+		// Two pointers for a list
+		Actor** m_actors;
+	}
+
+	void Update(double deltaTime)
+	{
+		for (int i = 0; i < _actors.Count; i++)
+		{
+			Actor actor = _actors[i];
+
+			if (!actor.Started)
+				actor.Start();
+
+			actor.Update(deltaTime);
+			if (actor.Collider != null)
+				actor.Collider.Draw();
+		}
+	}
+
+	void End()
+	{
+		for (Actor actor : in m_actors)
+		{
+			actor.End();
+		}
+	}
+};
