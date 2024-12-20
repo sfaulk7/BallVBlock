@@ -57,6 +57,7 @@ public:
 	void UpdateTransforms();
 
 
+
 private:
 
 	MathLibrary::Matrix3 m_localMatrix;
