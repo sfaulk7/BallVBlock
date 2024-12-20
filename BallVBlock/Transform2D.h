@@ -38,11 +38,11 @@ public:
 
 	int GetGlobalScale();
 
-	Vector2 GetForward();
-	Vector2 GetRight();
+	MathLibrary::Vector2 GetForward();
+	MathLibrary::Vector2 GetRight();
 
-	Vector2 GetLocalRotationAngle();
-	Vector2 GetGlobalRotationAngle();
+	MathLibrary::Vector2 GetLocalRotationAngle();
+	MathLibrary::Vector2 GetGlobalRotationAngle();
 
 	//Matrix and Vector manipulation
 	void Translate(MathLibrary::Vector2 direction);
