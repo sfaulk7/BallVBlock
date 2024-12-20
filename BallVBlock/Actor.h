@@ -3,15 +3,15 @@
 class Actor
 {
 private:
-	bool m_started();
-	bool m_enabled();
+	bool m_started;
+	bool m_enabled;
 
 	/*Component[] _components;
 	Component[] _componentsToRemove;*/
 
 protected:
-	void Started() { m_started = Started; }
-	void Enabled() { m_enabled = Enabled; }
+	void Started(bool started) { m_started = started; }
+	void Enabled(bool enabled) { m_enabled = enabled; }
 
 public:
 	
