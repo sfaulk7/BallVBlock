@@ -17,6 +17,8 @@ public:
 	
 	Actor();
 	~Actor();
+	Transform2D GetTransform();
+	void SetTransform();
 	const char* Name();
 	virtual void Instantiate();
 	void Destroy(Actor other);
@@ -27,4 +29,5 @@ public:
 	virtual void End();
 	virtual void OnCollision(Actor other);
 	
+	Transform2D* Transform;
 };
