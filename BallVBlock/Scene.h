@@ -1,5 +1,4 @@
 #pragma once
-#include "Actor.h"
 #include "DynamicArray.h"
 
 class Actor;
@@ -13,9 +12,11 @@ public:
 	void AddActor(Actor* actor);
 	bool RemoveActor(Actor* actor);
 	void Start();
-	void Update();
+	void Update(double deltatime);
 	void End();
-protected:
+	
+
+private:
 	DynamicArray<Actor*> m_actors;
 	DynamicArray<Actor*> m_actorsToBeRemoved;
 }; 
