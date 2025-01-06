@@ -50,8 +50,15 @@ public:
 		float rotation = 0,
 		const char* Name = "Actor")
 	{
-		actor->Transform->GetLocalPosition() = position;
+
+		// Set the actor transfrom values
+		actor->Transform.SetLocalPosition = position;
 		actor->Transform->Rotate(rotation);
+		actor->Name = Name;
+		if (parent != nullptr)
+			parent->AddChild(actor->Transform);
+
+		// Add actor to the current scene
 
 		return actor;
 	}
@@ -70,6 +77,8 @@ public:
 	{
 
 	}
+
+	// Get and set the collider
 
 	void Start()
 	{

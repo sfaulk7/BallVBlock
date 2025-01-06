@@ -8,7 +8,6 @@ class Scene
 public:
 	//Actor** m_actors = new Actor * [0];
 	//List<Actor> _actors;
-	std::list<Actor> _actors;
 
 	Scene()
 	{
@@ -17,15 +16,15 @@ public:
 
 	~Scene()
 	{
-		delete m_actors;
+		//delete m_actors;
 	}
-	void AddActor(Actor actor)
+	void AddActor(Actor* actor)
 	{
 		if (!m_actors.Contains(actor))
 			m_actors.Add(actor);
 	}
 
-	bool RemoveActor(Actor actor)
+	bool RemoveActor(Actor* actor)
 	{
 		//return m_actors*->Remove(actor);
 		return m_actors.Remove(actor);
@@ -40,22 +39,22 @@ public:
 
 	void Update(double deltaTime)
 	{
-		for (int i = 0; i < _actors.Count; i++)
+		for (int i = 0; i < m_actors.Count; i++)
 		{
-			Actor actor = _actors[i];
+			Actor actor = m_actors[i];
 
 			if (!actor.Started)
 				actor.Start();
 
 			actor.Update(deltaTime);
-			if (actor.Collider != null)
-				actor.Collider.Draw();
+			/*if (actor.Collider != null)
+				actor.Collider.Draw();*/
 		}
 	}
 
 	void End()
 	{
-		for (Actor actor : in m_actors)
+		for (Actor* actor : in m_actors)
 		{
 			actor.End();
 		}
