@@ -11,12 +11,12 @@ private:
 	Component[] _componentsToRemove;*/
 
 protected:
-	void Started(bool started) { m_started = started; }
-	void Enabled(bool enabled) { m_enabled = enabled; }
+	/*void Started(bool started) { m_started = started; }
+	void Enabled(bool enabled) { m_enabled = enabled; }*/
 
 public:
 	
-	Actor();
+	Actor(const char* name = nullptr);
 	~Actor();
 	Transform2D GetTransform();
 	void SetTransform();
@@ -29,6 +29,8 @@ public:
 	virtual void Update(double deltatime);
 	virtual void End();
 	virtual void OnCollision(Actor other);
+	void Started(bool started) { m_started = started; }
+	void Enabled(bool enabled) { m_enabled = enabled; }
 	
 	Transform2D* Transform;
 };

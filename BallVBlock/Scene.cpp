@@ -1,50 +1,55 @@
 #include "Scene.h"
 #include <iostream>
 #include "Actor.h"
-#include "list"
+#include "DynamicArray.h"
 
-class Scene
-{
-public:
 	//Actor** m_actors = new Actor * [0];
 	//List<Actor> _actors;
 
-	Scene()
+
+	Scene::Scene()
 	{
 		//Actor** m_actors = new Actor * [0];
 	}
 
-	~Scene()
+	Scene::~Scene()
 	{
 		//delete m_actors;
 	}
-	void AddActor(Actor* actor)
+
+	void Scene::Contains(Actor* actor)
+	{
+		if (m_actors.Length() = 1)
+			Contains = true;
+	}
+
+	void Scene::AddActor(Actor* actor)
 	{
 		if (!m_actors.Contains(actor))
 			m_actors.Add(actor);
 	}
 
-	bool RemoveActor(Actor* actor)
+	bool Scene::RemoveActor(Actor* actor)
 	{
 		//return m_actors*->Remove(actor);
-		return m_actors.Remove(actor);
+		m_actorsToBeRemoved.Remove(actor);
 
 	}
 
-	void Start()
+	void Scene::Start()
 	{
 		// Two pointers for a list
 		Actor** m_actors;
 	}
 
-	void Update(double deltaTime)
+	void Scene::Update(double deltaTime)
 	{
-		for (int i = 0; i < m_actors.Count; i++)
+		for (int i = 0; i < m_actors.Length(); i++)
 		{
-			Actor actor = m_actors[i];
+			Actor* actor = m_actors[i];
 
-			if (!actor.Started)
-				actor.Start();
+			if (!actor.Started())
+				actor.Started();
 
 			actor.Update(deltaTime);
 			/*if (actor.Collider != null)
@@ -52,11 +57,11 @@ public:
 		}
 	}
 
-	void End()
+	void Scene::End()
 	{
-		for (Actor* actor : in m_actors)
+		for each(Actor* actor :: in m_actors)
 		{
-			actor.End();
+			Actor* End();
+			//actor.End();
 		}
 	}
-};

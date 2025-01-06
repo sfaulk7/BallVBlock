@@ -2,6 +2,8 @@
 #include "Transform2D.h"
 #include "math.h"
 #include "Vector2.h"
+#include "Game.h"
+#include "Scene.h"
 
 class Actor
 {
@@ -56,9 +58,10 @@ public:
 		actor->Transform->Rotate(rotation);
 		actor->Name = Name;
 		if (parent != nullptr)
-			parent->AddChild(actor->Transform);
+			parent.AddChild(actor->Transform);
 
 		// Add actor to the current scene
+		Game.CurrentScene.AddActor(Actor* actor);
 
 		return actor;
 	}
