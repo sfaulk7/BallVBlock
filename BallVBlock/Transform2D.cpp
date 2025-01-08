@@ -36,7 +36,7 @@ public:
 	{
 		return MathLibrary::Vector2(m_localTranslation.m02, m_localTranslation.m12);
 	}
-	void SetLocalPosition(MathLibrary::Vector2 value)
+	void Transform2D::SetLocalPosition(MathLibrary::Vector2 value)
 	{
 		m_localTranslation.m02 = value.x;
 		m_localTranslation.m12 = value.y;
