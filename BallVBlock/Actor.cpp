@@ -54,21 +54,31 @@ public:
 	{
 
 		// Set the actor transfrom values
-		actor->Transform.SetLocalPosition = position;
+		//actor->Transform.SetLocalPosition = position;
+		actor->Transform->SetLocalPosition(position);
 		actor->Transform->Rotate(rotation);
 		actor->Name = Name;
 		if (parent != nullptr)
 			parent.AddChild(actor->Transform);
 
 		// Add actor to the current scene
-		Game.CurrentScene.AddActor(Actor* actor);
+		Game.CurrentScene.AddActor(Actor * actor);
 
 		return actor;
 	}
 
-	void Destroy(Actor actor)
+	void Destroy(Actor* actor)
 	{
 		// Remove all the children
+		for (Transform2D* element : actor->Transform.GetChildren())
+		{
+			actor->Transform->RemoveChild();
+		}
+
+		if (actor->Transform.GetParent != nullptr)
+			actor->Transform.GetParent.RemoveChild(actor->Transform);
+
+		Game.CurrentScene.RemoveActor(Actor* actor);
 	}
 
 	void OnEnable()
@@ -81,25 +91,31 @@ public:
 
 	}
 
+
 	// Get and set the collider
 
 	void Start()
 	{
+		m_started = true;
 
+		Transform->UpdateTransforms();
+		
 	}
 
 	void Update(double deltatime)
 	{
-
+		// Need component for update function
 	}
 
 	void End()
 	{
-
+		// Need component for end function
 	}
 
 	void OnCollision(Actor other)
 	{
 
 	}
+
+	// Component functions below
 };
