@@ -39,7 +39,7 @@ public:
 	void RemoveAll(const T* array, int size);
 	void RemoveAll(const DynamicArray<T>& other);
 
-	bool Contains(Actor* actor) = false;
+	bool Contains(const T item);
 
 	//Clear the list; getting rid of references but not what it is refrencing
 	void Clear();

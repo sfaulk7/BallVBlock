@@ -17,12 +17,6 @@
 		//delete m_actors;
 	}
 
-	void Scene::Contains(Actor* actor)
-	{
-		if (m_actors.Length() = 1)
-			Contains = true;
-	}
-
 	void Scene::AddActor(Actor* actor)
 	{
 		if (!m_actors.Contains(actor))
@@ -48,20 +42,21 @@
 		{
 			Actor* actor = m_actors[i];
 
-			if (!actor.Started())
-				actor.Started();
+			if (actor->Started(false))
+				actor->Start();
 
-			actor.Update(deltaTime);
+			actor->Update(deltaTime);
 			/*if (actor.Collider != null)
 				actor.Collider.Draw();*/
 		}
+
+		// Check for collision here
 	}
 
 	void Scene::End()
 	{
-		for each(Actor* actor :: in m_actors)
+		for (int i = 0; i < m_actors.Length(); i++)
 		{
-			Actor* End();
-			//actor.End();
+			m_actors[i]->End();
 		}
 	}
