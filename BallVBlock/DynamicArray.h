@@ -1,49 +1,70 @@
 #pragma once
 
+//Tells c++ this is a templated class and we are going to pass in t
 template<typename T>
 class DynamicArray
 {
 public:
+	// First constructor
+	// Defining a default constructor
 	DynamicArray();
+	// Defining a default constructor that can be resized
 	DynamicArray(const T* array, int size);
+	// Constructor
 	DynamicArray(const DynamicArray<T>& other);
+	// Destructor
 	~DynamicArray();
 
-	DynamicArray<T>& operator = (const DynamicArray<T>& other);
-	T& operator[] (int index);
-	const T& operator[] (int index) const;
+	// Copy assignment operator
+	DynamicArray<T>& operator=(const DynamicArray<T>& other);
+	T& operator[](int index);
+	// Constant overload incase we want to get anything constant out of the array
+	const T& operator[](int index) const;
 
+	// So the array stores its length
+	// Getter for the length
 	int Length() const;
+	// Function to resize array
 	void Resize(int newSize);
 
+	// Sets up dynamic array to be used with range based for loop
+	// Needs to know where it begins and ends
+	// Needs to be lowercase
+	// Since we are making a list that will be looped over, we need these to show the beginning and end of arrays
 	T* begin();
 	const T* begin() const;
 	T* end();
 	const T* end() const;
 
+	// Add a thing to the array
+	// We are not going to change the value so it is const
+	// Passes in a value
 	void Add(const T& value);
+	// Passes in an array
 	void Add(const T* array, int size);
+	// Passes in another Dynamic Array
 	void Add(const DynamicArray<T>& other);
+	// Add an item to the array but dont add it if already in the list
 	void AddUnique(const T& value);
-
+	// Insert into the middle of the array
 	void Insert(int index, const T& value);
+	// Insert an array in the middle
 	void Insert(int index, const T* array, int size);
+	// Insert a dynamic array in the middle
 	void Insert(int index, const DynamicArray<T>& other);
-
-	void Remove(int index);
+	//Remove a specific thing from the list
+	void RemoveIndex(int index);
+	// Use const to show there will be no changes, it is just a container
+	// Remove a value from the list
 	void Remove(const T& value);
+	// Remove an array
 	void Remove(const T* array, int size);
+	// Remove a dynamic array
 	void Remove(const DynamicArray<T>& other);
 
-	void RemoveAll(const T& value);
-	void RemoveAll(const T* array, int size);
-	void RemoveAll(const DynamicArray<T>& other);
-
 	bool Contains(const T item);
-
-	//Clear the list; getting rid of references but not what it is refrencing
+	// No deleting except for our own array
 	void Clear();
-
 
 private:
 	T* m_array;
@@ -51,54 +72,61 @@ private:
 
 };
 
+// When we define we are outside the class
 template<typename T>
+// Mark as inline because we are in the header
+// Dynamic Array Default Constructor
 inline DynamicArray<T>::DynamicArray()
 {
-	m_lenth = 0;
-	m_array = new T[m_lenth];
+	m_length = 0;
+	m_array = new T[m_length];
 }
 
 template<typename T>
 inline DynamicArray<T>::DynamicArray(const T* array, int size)
 {
-	m_lenth = size;
-	m_array = new T[m_lenth];
+
+	m_length = size;
+	m_array = new T[m_length];
 	for (int i = 0; i < m_length; i++)
 	{
 		m_array[i] = array[i];
 	}
 }
 
+// Copy constructor
 template<typename T>
 inline DynamicArray<T>::DynamicArray(const DynamicArray<T>& other)
 {
-	m_lenth = other.m_length;
-	m_array = new T[m_lenth];
+	m_length = other.m_length;
+	m_array = new T[m_length];
+	// Copy all the stuff in
 	for (int i = 0; i < m_length; i++)
 	{
 		m_array[i] = other.m_array[i];
 	}
 }
-
+// The Destructor
 template<typename T>
 inline DynamicArray<T>::~DynamicArray()
 {
 	delete[] m_array;
 }
 
-//Equal overload
 template<typename T>
-inline DynamicArray<T>& DynamicArray<T>::operator= (const DynamicArray<T>& other)
+inline DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& other)
 {
-	m_lenth = other.m_length;
+	m_length = other.m_length;
+	// Delete array and then make a new one using the length
 	delete[] m_array;
-	m_array = new T[m_lenth];
+	m_array = new T[m_length];
+	// Copying
 	for (int i = 0; i < m_length; i++)
 	{
 		m_array[i] = other.m_array[i];
 	}
+	return *this;
 }
-
 
 template<typename T>
 inline T& DynamicArray<T>::operator[](int index)
@@ -121,15 +149,18 @@ inline int DynamicArray<T>::Length() const
 template<typename T>
 inline void DynamicArray<T>::Resize(int newSize)
 {
+	// Making a new array of the size we are going to
 	T* newArray = new T[newSize];
-	for (int i = 0; i < m_length; i++)
+	// Makes certain we do not overflow either of the two arrays
+	for (int i = 0; i < m_length && i < newSize; i++)
 	{
-		m_array[i] = other.m_array[i];
+		// Copy out the stuff from the old array into the new array
+		newArray[i] = m_array[i];
 	}
 	delete[] m_array;
 	m_array = newArray;
 	m_length = newSize;
-};
+}
 
 template<typename T>
 inline T* DynamicArray<T>::begin()
@@ -159,11 +190,11 @@ template<typename T>
 inline void DynamicArray<T>::Add(const T& value)
 {
 	Resize(m_length + 1);
-	m_array[m_lenth - 1] = value;
+	m_array[m_length - 1] = value;
 }
 
 template<typename T>
-inline void DynamicArray<T>::Add(const T* value, int size)
+inline void DynamicArray<T>::Add(const T* array, int size)
 {
 	int oldLength = m_length;
 	Resize(m_length + size);
@@ -178,7 +209,7 @@ inline void DynamicArray<T>::Add(const DynamicArray<T>& other)
 {
 	int oldLength = m_length;
 	Resize(m_length + other.m_length);
-	for (int i = 0; i < m_length; i++)
+	for (int i = 0; i < other.Length; i++)
 	{
 		m_array[oldLength + i] = other.m_array[i];
 	}
@@ -189,65 +220,63 @@ inline void DynamicArray<T>::AddUnique(const T& value)
 {
 	for (int i = 0; i < m_length; i++)
 	{
-		if (m_array == value)
-		{
+		if (m_array[i] == value)
 			return;
-		}
 	}
 	Add(value);
 }
 
-template<typename T>
+template <typename T>
 inline void DynamicArray<T>::Insert(int index, const T& value)
 {
 	Resize(m_length + 1);
 	for (int i = m_length - 1; i > index; i--)
 	{
-		m_array[i] = m_array[i] - 1
+		m_array[i] = m_array[i - 1];
 	}
 	m_array[index] = value;
 }
 
-template<typename T>
-inline void DynamicArray<T>::Insert(int index, const T* value, int size)
+template <typename T>
+inline void DynamicArray<T>::Insert(int index, const T* array, int size)
 {
 	Resize(m_length + size);
-	for (int i = m_length - 1; i > index; i--)
+	for (int i = m_length - 1; i >= index + size; i--)
 	{
-		m_array[i] = m_array[i - size]
+		m_array[i] = m_array[i - size];
 	}
 	for (int i = 0; i < size; i++)
 	{
-		m_array[index + i] = m_array[i];
+		m_array[index + i] = array[i];
+
 	}
 }
 
-template<typename T>
+template <typename T>
 inline void DynamicArray<T>::Insert(int index, const DynamicArray<T>& other)
 {
 	Resize(m_length + other.m_length);
-	for (int i = m_length - 1; i > index; i--)
+	for (int i = m_length - 1; i >= index + other.m_length; i--)
 	{
-		m_array[i] = m_array[i - other.m_length]
+		m_array[i] = m_array[i - other.m_length];
 	}
 	for (int i = 0; i < other.m_length; i++)
 	{
-		m_array[index + i] = m_array[i];
+		m_array[index + i] = other.m_array[i];
 	}
 }
 
-template<typename T>
-inline void DynamicArray<T>::Remove(int index)
+template <typename T>
+inline void DynamicArray<T>::RemoveIndex(int index)
 {
-	for (int i = 0; i < m_length - 1; i++)
+	for (int i = index; i < m_length - 1; i++)
 	{
 		m_array[i] = m_array[i + 1];
 	}
 	Resize(m_length - 1);
 }
 
-//Removes the first instance of a selected value
-template<typename T>
+template <typename T>
 inline void DynamicArray<T>::Remove(const T& value)
 {
 	for (int i = 0; i < m_length; i++)
@@ -260,62 +289,27 @@ inline void DynamicArray<T>::Remove(const T& value)
 	}
 }
 
-template<typename T>
+template <typename T>
 inline void DynamicArray<T>::Remove(const T* array, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
 		Remove(array[i]);
-		return;
 	}
 }
 
-template<typename T>
+template <typename T>
 inline void DynamicArray<T>::Remove(const DynamicArray<T>& other)
 {
 	for (int i = 0; i < other.m_length; i++)
 	{
 		Remove(other.m_array[i]);
-		return;
 	}
 }
 
-//Removes every instance of a selected value
-template<typename T>
-inline void DynamicArray<T>::RemoveAll(const T& value)
-{
-	for (int i = 0; i < m_length; i++)
-	{
-		if (m_array[i] == value)
-		{
-			Remove(i);
-		}
-	}
-}
-
-template<typename T>
-inline void DynamicArray<T>::RemoveAll(const T* array, int size)
-{
-	for (int i = 0; i < size; i++)
-	{
-		Remove(array[i]);
-		return;
-	}
-}
-
-template<typename T>
-inline void DynamicArray<T>::RemoveAll(const DynamicArray<T>& other)
-{
-	for (int i = 0; i < other.m_length; i++)
-	{
-		Remove(other.m_array[i]);
-		return;
-	}
-}
-
-//Clears an array
-template<typename T>
+template <typename T>
 inline void DynamicArray<T>::Clear()
 {
+	// Clear out all the references in the array, delete the array, reinitialize in an empty array
 	Resize(0);
 }
