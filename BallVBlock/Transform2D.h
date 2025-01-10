@@ -1,4 +1,5 @@
 #pragma once
+#include "Matrix3.h"
 
 /// <summary>
 	/// Summary
@@ -7,15 +8,12 @@
 
 namespace MathLibrary 
 {
-	class Matrix3 
-	{
-
-	};
 	class Vector2
 	{
 
 	};
 }
+
 class Actor;
 
 class Transform2D

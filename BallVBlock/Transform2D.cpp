@@ -3,16 +3,13 @@
 #include "Matrix3.h"
 #include "Transform2D.h"
 #include "DynamicArray.h"
+#include "Actor.h"
 
 /// <summary>
 	/// Getters and Setters
 	/// </summary>
 	/// <returns></returns>
 
-class Actor
-{
-
-};
 
 
 class Transform2D
