@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "Scene.h"
 #include "DynamicArray.h"
+#include "Component.h"
 
 
 	/*MathLibrary::Matrix3 GetLocalRotation()
@@ -68,13 +69,13 @@
 	void Actor::Destroy(Actor* actor)
 	{
 		// Remove all the children
-		for (Transform2D* element : actor->Transform.GetChildren())
+		for (Transform2D* child : actor->Transform->GetChildren())
 		{
 			actor->Transform->RemoveChild();
 		}
 
-		if (actor->Transform.GetParent != nullptr)
-			actor->Transform.GetParent.RemoveChild(actor->Transform);
+		if (actor->Transform.GetParent() != nullptr)
+			actor->Transform.GetParent().RemoveChild(actor->Transform);
 
 		Game().CurrentScene().RemoveActor(actor);
 	}
