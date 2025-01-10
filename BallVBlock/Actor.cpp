@@ -1,13 +1,10 @@
 #include "Actor.h"
 #include "Transform2D.h"
 #include "math.h"
-#include "Vector2.h"
 #include "Game.h"
 #include "Scene.h"
+#include "DynamicArray.h"
 
-class Actor
-{
-public:
 
 	/*MathLibrary::Matrix3 GetLocalRotation()
 	{
@@ -19,11 +16,12 @@ public:
 		UpdateTransforms();
 	}*/
 
-	const char* Name;
-	Transform2D* Transform;
+	
 
-	Actor(const char* name = "Actor") 
+	Actor::Actor(const char* name = "Actor") 
 	{
+		const char* Name;
+		Transform2D* Transform;
 		Name = name;
 		Transform = new Transform2D();
 
@@ -33,12 +31,12 @@ public:
 
 	}
 
-	void SetTransform()
+	void Actor::SetTransform()
 	{
 
 	}
 
-	~Actor()
+	Actor::~Actor()
 	{
 		delete Transform;
 	}
@@ -67,7 +65,7 @@ public:
 		return actor;
 	}
 
-	void Destroy(Actor* actor)
+	void Actor::Destroy(Actor* actor)
 	{
 		// Remove all the children
 		for (Transform2D* element : actor->Transform.GetChildren())
@@ -75,18 +73,18 @@ public:
 			actor->Transform->RemoveChild();
 		}
 
-		if (Actor* actor->Transform.GetParent != nullptr)
+		if (actor->Transform.GetParent != nullptr)
 			actor->Transform.GetParent.RemoveChild(actor->Transform);
 
 		Game().CurrentScene().RemoveActor(actor);
 	}
 
-	void OnEnable()
+	void Actor::OnEnable()
 	{
 
 	}
 
-	void OnDisable()
+	void Actor::OnDisable()
 	{
 
 	}
@@ -94,7 +92,7 @@ public:
 
 	// Get and set the collider
 
-	void Start()
+	void Actor::Start()
 	{
 		m_started = true;
 
@@ -102,20 +100,20 @@ public:
 		
 	}
 
-	void Update(double deltatime)
+	void Actor::Update(double deltatime)
 	{
 		// Need component for update function
 	}
 
-	void End()
+	void Actor::End()
 	{
 		// Need component for end function
 	}
 
-	void OnCollision(Actor other)
+	void Actor::OnCollision(Actor* other)
 	{
 
 	}
 
 	// Component functions below
-};
+
