@@ -4,64 +4,37 @@ class Actor;
 
 class Component
 {
+
 public:
+	Component(Actor* owner = nullptr);
+	~Component();
+
 	Actor* m_owner;
-	Actor* Owner;
+
 	bool Enabled;
 	bool Started;
 
-	Actor* GetOwner()
-	{
+	Actor* GetOwner();
+	void SetOwner(Actor* Owner);
 
-	}
-	void SetOwner(Actor* Owner)
-	{
+	bool GetEnabled();
+	void SetEnabled(bool value);
 
-	}
+	bool GetStarted();
 
-	bool GetEnabled()
-	{
 
-	}
-	void SetEnabled(bool value)
-	{
+	virtual void OnEnable();
+	virtual void OnDisable();
 
-	}
-
-	bool GetStarted()
-	{
-
-	}
-
-	Component(Actor* owner = nullptr)
-	{
-		
-	}
-
-	virtual void OnEnable()
-	{
-
-	}
-	virtual void OnDisable()
-	{
-
-	}
-
-	virtual void Start()
-	{
-
-	}
+	virtual void Start();
 	virtual void Update(double deltatime)
 	{
-		if (Owner = nullptr)
+		if (m_owner = nullptr)
 		{
 			End();
 		}
 	}
-	virtual void End()
-	{
-
-	}
+	virtual void End();
 
 private:
 	bool m_enabled;

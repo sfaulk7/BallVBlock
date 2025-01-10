@@ -14,7 +14,18 @@
 //bool m_enabled;
 //bool m_started;
 
-Actor* GetOwner()
+Component::Component(Actor* owner = nullptr)
+{
+	m_owner = owner;
+	m_enabled = true;
+	m_started = false;
+}
+Component::~Component()
+{
+
+}
+
+Actor* Component::GetOwner()
 {
 	return m_owner;
 }
@@ -23,11 +34,11 @@ void Component::SetOwner(Actor* Owner)
 	m_owner = Owner;
 }
 	
-bool GetEnabled()
+bool Component::GetEnabled()
 {
 	return m_enabled;
 }
-void SetEnabled(bool value)
+void Component::SetEnabled(bool value)
 {
 	//if enables would not change, do nothing
 	if (m_enabled == value) return;
@@ -45,39 +56,34 @@ void SetEnabled(bool value)
 	}
 }
 
-bool GetStarted()
+bool Component::GetStarted()
 {
 	return m_started;
 }
 
-Component(Actor* owner = nullptr)
-{
-	m_owner = owner;
-	m_enabled = true;
-	m_started = false;
-}
 
-virtual void OnEnable()
+
+void Component::OnEnable()
 {
 
 }
-virtual void OnDisable()
+void Component::OnDisable()
 {
 
 }
 
-virtual void Start()
+void Component::Start()
 {
 	m_started = true;
 }
-virtual void Update(double deltatime)
+void Component::Update(double deltatime)
 {
-	if (Owner = nullptr)
+	if (m_owner = nullptr)
 	{
 		End();
 	}
 }
-virtual void End()
+void Component::End()
 {
 	m_enabled = false;
 }

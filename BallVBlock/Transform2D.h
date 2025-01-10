@@ -1,46 +1,52 @@
 #pragma once
 #include "Matrix3.h"
+#include "Vector2.h"
+#include "DynamicArray.h"
 
 /// <summary>
 	/// Summary
 	/// </summary>
 	/// <returns></returns>
 
-namespace MathLibrary 
-{
-	class Vector2
-	{
-
-	};
-}
-
 class Actor;
 
 class Transform2D
 {
-protected:
-
 
 public:
+	Transform2D(Actor* owner = nullptr);
+	~Transform2D();
+
 	//Getters and Setters
 	MathLibrary::Matrix3 GetLocalRotation();
 	void SetLocalRotation();
 
-	int GetLocalPosition();
-	void SetLocalPosition();
+	MathLibrary::Vector2 GetLocalPosition();
+	void SetLocalPosition(MathLibrary::Vector2 value);
 
-	int GetLocalScale();
-	void SetLocalScale();
+	MathLibrary::Vector2 GetLocalScale();
+	void SetLocalScale(MathLibrary::Vector2 value);
 
-	int GetGlobalPosition();
+	MathLibrary::Vector2 GetGlobalPosition();
 
-	int GetGlobalScale();
+	MathLibrary::Vector2 GetGlobalScale();
+
+	Actor* GetOwner()
+	{
+		return m_owner;
+	}
 
 	MathLibrary::Vector2 GetForward();
 	MathLibrary::Vector2 GetRight();
 
-	MathLibrary::Vector2 GetLocalRotationAngle();
-	MathLibrary::Vector2 GetGlobalRotationAngle();
+	float GetLocalRotationAngle();
+	float GetGlobalRotationAngle();
+
+	Transform2D* GetParent();
+	DynamicArray<Transform2D*> GetChildren()
+	{
+		return m_children;
+	}
 
 	//Matrix and Vector manipulation
 	void Translate(MathLibrary::Vector2 direction);
@@ -48,8 +54,8 @@ public:
 	void Rotate(float radians);
 
 	//Parent child relationship advise
-	void AddChild(Transform2D child);
-	void RemoveChild(Transform2D child);
+	void AddChild(Transform2D* child);
+	bool RemoveChild(Transform2D* child);
 
 	//Update
 	void UpdateTransforms();

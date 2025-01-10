@@ -35,7 +35,6 @@ public:
 	virtual void OnCollision(Actor* other);
 	bool Started(bool started) { m_started = started; }
 	bool Enabled(bool enabled) { m_enabled = enabled; }
-	virtual void OnCollision(Actor* other);
 	//void AddComponentToRemove(Component comp);
 	//void RemoveComponentsToBeRemoved();
 	
