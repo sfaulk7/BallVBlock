@@ -13,8 +13,34 @@ public:
 	bool Enabled;
 	bool Started;
 
-	Actor* GetOwner();
-	void SetOwner();
+	Actor* GetOwner()
+	{
+
+	}
+	void SetOwner(Actor* Owner)
+	{
+
+	}
+
+	bool GetEnabled()
+	{
+
+	}
+	void SetEnabled(bool value)
+	{
+
+	}
+
+	bool GetStarted()
+	{
+
+	}
+
+	Component(Actor* owner = nullptr)
+	{
+		
+	}
+
 	virtual void OnEnable()
 	{
 
@@ -32,7 +58,7 @@ public:
 	{
 		if (Owner = nullptr)
 		{
-			throw NullReferenceException();
+			End();
 		}
 	}
 	virtual void End()
@@ -41,7 +67,7 @@ public:
 	}
 
 private:
-	bool _enabled;
-	bool _started;
+	bool m_enabled;
+	bool m_started;
 
 };
