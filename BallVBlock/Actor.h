@@ -1,6 +1,8 @@
 #pragma once
 #include "Transform2D.h"
 
+class Scene;
+
 class Actor
 {
 private:
