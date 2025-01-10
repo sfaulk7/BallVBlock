@@ -42,6 +42,11 @@
 		delete Transform;
 	}
 
+	const char* Actor::Name(const char* name)
+	{
+		return name;
+	}
+
 
 	Actor* Instantiate(
 
@@ -56,9 +61,11 @@
 		//actor->Transform.SetLocalPosition = position;
 		actor->Transform->SetLocalPosition(position);
 		actor->Transform->Rotate(rotation);
-		actor->Name = Name;
+		actor->Name(Name);
 		if (parent != nullptr)
-			Game().CurrentScene().parent.AddChild(actor->Transform);
+			//Transform2D* parent.AddChild(actor->Transform);
+			actor->Transform->GetParent()->AddChild(actor->Transform);
+		
 
 		// Add actor to the current scene
 		Game().CurrentScene().AddActor(actor);
@@ -71,11 +78,11 @@
 		// Remove all the children
 		for (Transform2D* child : actor->Transform->GetChildren())
 		{
-			actor->Transform->RemoveChild();
+			actor->Transform->RemoveChild(child);
 		}
 
-		if (actor->Transform.GetParent() != nullptr)
-			actor->Transform.GetParent().RemoveChild(actor->Transform);
+		if (actor->Transform->GetParent() != nullptr)
+			actor->Transform->GetParent()->RemoveChild(actor->Transform);
 
 		Game().CurrentScene().RemoveActor(actor);
 	}

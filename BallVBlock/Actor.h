@@ -24,7 +24,7 @@ public:
 	~Actor();
 	Transform2D GetTransform();
 	void SetTransform();
-	const char* Name();
+	const char* Name(const char* name);
 	virtual void Instantiate();
     void Destroy(Actor* other);
 	virtual void OnEnable();
