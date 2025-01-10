@@ -59,10 +59,10 @@ public:
 		actor->Transform->Rotate(rotation);
 		actor->Name = Name;
 		if (parent != nullptr)
-			parent.AddChild(actor->Transform);
+			Game().CurrentScene().parent.AddChild(actor->Transform);
 
 		// Add actor to the current scene
-		Game.CurrentScene.AddActor(Actor * actor);
+		Game().CurrentScene().AddActor(actor);
 
 		return actor;
 	}
@@ -75,10 +75,10 @@ public:
 			actor->Transform->RemoveChild();
 		}
 
-		if (actor->Transform.GetParent != nullptr)
+		if (Actor* actor->Transform.GetParent != nullptr)
 			actor->Transform.GetParent.RemoveChild(actor->Transform);
 
-		Game.CurrentScene.RemoveActor(Actor* actor);
+		Game().CurrentScene().RemoveActor(actor);
 	}
 
 	void OnEnable()
