@@ -1,7 +1,8 @@
 #pragma once
-#include "Transform2D.h"
+#include "Engine/Transform2D.h"
 
 class Scene;
+class Component;
 
 class Actor
 {
@@ -9,8 +10,8 @@ private:
 	bool m_started;
 	bool m_enabled;
 
-	/*Component[] _components;
-	Component[] _componentsToRemove;*/
+	DynamicArray<Component*> m_components;
+	DynamicArray<Component*> m_componentsToRemove;
 
 protected:
 	/*void Started(bool started) { m_started = started; }

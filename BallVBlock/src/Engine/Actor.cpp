@@ -1,10 +1,10 @@
+#include "Game.h"
 #include "Actor.h"
 #include "Transform2D.h"
-#include "math.h"
-#include "Game.h"
 #include "Scene.h"
 #include "DynamicArray.h"
 #include "Component.h"
+#include "Scenes/PlayScene.h"
 
 
 	/*MathLibrary::Matrix3 GetLocalRotation()
@@ -64,7 +64,7 @@
 
 
 		// Add actor to the current scene
-		Game().CurrentScene().AddActor(actor);
+		Game().CurrentScene()->AddActor(actor);
 
 		return actor;
 	}
@@ -82,7 +82,7 @@
 		if (actor->Transform->GetParent() != nullptr)
 			actor->Transform->GetParent()->RemoveChild(actor->Transform);
 
-		Game().CurrentScene().RemoveActor(actor);
+		Game().CurrentScene()->RemoveActor(actor);
 	}
 
 	void Actor::OnEnable()
@@ -108,7 +108,10 @@
 
 	void Actor::Update(double deltatime)
 	{
-		// Need component for update function
+		for (int i = 0; i < m_components.Length(); i++)
+		{
+
+		}
 	}
 
 	void Actor::End()

@@ -19,65 +19,83 @@
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{aca54b34-1762-4871-8556-4d1510fb4253}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Actor">
-      <UniqueIdentifier>{f17e0e6a-4963-4ddc-a588-f6f48793344c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Scene">
-      <UniqueIdentifier>{c0e62eac-125a-45f1-b934-90063e99659b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Transform2D">
       <UniqueIdentifier>{95b06b5d-e5fd-4435-930e-3d1cf72c160e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Actors">
+      <UniqueIdentifier>{f17e0e6a-4963-4ddc-a588-f6f48793344c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scenes">
+      <UniqueIdentifier>{c0e62eac-125a-45f1-b934-90063e99659b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
+    <ClCompile Include="src\Engine\Component.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Engine\Actor</Filter>
+    <ClCompile Include="src\Engine\Actor.cpp">
+      <Filter>Engine\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="Transform2D.cpp">
+    <ClCompile Include="src\Engine\Transform2D.cpp">
       <Filter>Engine\Transform2D</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Engine\Scene</Filter>
+    <ClCompile Include="src\Engine\Scene.cpp">
+      <Filter>Engine\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Collider.cpp">
+    <ClCompile Include="src\Engine\Collider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actors\PlayerActor.cpp">
+      <Filter>Engine\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actors\BlockActor.cpp">
+      <Filter>Engine\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\PlayScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\BlockSpawnComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="src\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
+    <ClInclude Include="src\Engine\Component.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Engine\Actor</Filter>
+    <ClInclude Include="src\Engine\Actor.h">
+      <Filter>Engine\Actors</Filter>
     </ClInclude>
-    <ClInclude Include="Transform2D.h">
+    <ClInclude Include="src\Engine\Transform2D.h">
       <Filter>Engine\Transform2D</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Engine\Scene</Filter>
+    <ClInclude Include="src\Engine\Scene.h">
+      <Filter>Engine\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.h">
+    <ClInclude Include="src\Engine\Collider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicArray.h">
+    <ClInclude Include="src\Engine\DynamicArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\PlayScene.h">
+      <Filter>Engine\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actors\PlayerActor.h">
+      <Filter>Engine\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actors\BlockActor.h">
+      <Filter>Engine\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\BlockSpawnComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

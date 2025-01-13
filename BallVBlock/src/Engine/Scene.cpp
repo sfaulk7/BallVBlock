@@ -46,8 +46,8 @@
 		{
 			Actor* actor = m_actors[i];
 
-			if (actor->GetStarted() == false)
-				actor->Start();
+			if (m_actors[i]->GetStarted() == false)
+				m_actors[i]->Start();
 
 			actor->Update(deltaTime);
 			/*if (actor.Collider != null)
