@@ -1,5 +1,10 @@
+#include "Actor.h"
+#include "Transform2D.h"
+#include "math.h"
 #include "Game.h"
-#include "raylib.h"
+#include "Scene.h"
+#include "DynamicArray.h"
+#include "Component.h"
 
 
 Game::Game()
@@ -10,6 +15,25 @@ Game::Game()
 Game::~Game()
 {
 
+}
+
+Scene Game::CurrentScene()
+{
+	return Scene();
+}
+
+void Game::AddScene(Scene scene)
+{
+}
+
+bool Game::RemoveScene(Scene scene)
+{
+	return false;
+}
+
+Scene Game::GetScene(int index)
+{
+	return Scene();
 }
 
 void Game::Start()
@@ -34,6 +58,11 @@ void Game::Update(float deltaTime)
 {
 
 
+
+}
+
+void Game::End()
+{
 
 }
 

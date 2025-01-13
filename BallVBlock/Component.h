@@ -27,13 +27,7 @@ public:
 	virtual void OnDisable();
 
 	virtual void Start();
-	virtual void Update(double deltatime)
-	{
-		if (m_owner = nullptr)
-		{
-			End();
-		}
-	}
+	virtual void Update(double deltatime);
 	virtual void End();
 
 private:

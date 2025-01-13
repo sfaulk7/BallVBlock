@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 class Actor;
+class Scene;
 
 class Game
 {

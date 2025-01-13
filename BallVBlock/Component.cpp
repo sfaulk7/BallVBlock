@@ -14,7 +14,7 @@
 //bool m_enabled;
 //bool m_started;
 
-Component::Component(Actor* owner = nullptr)
+Component::Component(Actor* owner)
 {
 	m_owner = owner;
 	m_enabled = true;

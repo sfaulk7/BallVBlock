@@ -283,7 +283,7 @@ inline void DynamicArray<T>::Remove(const T& value)
 	{
 		if (m_array[i] == value)
 		{
-			Remove(i);
+			RemoveIndex(i);
 			return;
 		}
 	}
@@ -305,6 +305,19 @@ inline void DynamicArray<T>::Remove(const DynamicArray<T>& other)
 	{
 		Remove(other.m_array[i]);
 	}
+}
+
+template<typename T>
+inline bool DynamicArray<T>::Contains(const T item)
+{
+	for (int i = 0; i < m_length - 1; i++)
+	{
+		if (m_array[i] == item)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 template <typename T>

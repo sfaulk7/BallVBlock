@@ -17,10 +17,13 @@
 		//delete m_actors;
 	}
 
+
 	void Scene::AddActor(Actor* actor)
 	{
-		if (!m_actors.Contains(actor))
+		if (!(m_actors.Contains(actor)))
+		{
 			m_actors.Add(actor);
+		}
 	}
 
 	bool Scene::RemoveActor(Actor* actor)
@@ -28,6 +31,7 @@
 		//return m_actors*->Remove(actor);
 		m_actorsToBeRemoved.Remove(actor);
 
+		return true;
 	}
 
 	void Scene::Start()
@@ -42,7 +46,7 @@
 		{
 			Actor* actor = m_actors[i];
 
-			if (actor->Started(false))
+			if (actor->GetStarted() == false)
 				actor->Start();
 
 			actor->Update(deltaTime);

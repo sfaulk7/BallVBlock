@@ -47,16 +47,12 @@
 		return name;
 	}
 
-
-	Actor* Instantiate(
-
-		Actor* actor,
-		Transform2D* parent = nullptr,
-		MathLibrary::Vector2 position = MathLibrary::Vector2(),
-		float rotation = 0,
-		const char* Name = "Actor")
+	Actor* Actor::Instantiate(Actor* actor,
+		Transform2D* parent,
+		MathLibrary::Vector2 position,
+		float rotation,
+		const char* Name)
 	{
-
 		// Set the actor transfrom values
 		//actor->Transform.SetLocalPosition = position;
 		actor->Transform->SetLocalPosition(position);
@@ -65,13 +61,15 @@
 		if (parent != nullptr)
 			//Transform2D* parent.AddChild(actor->Transform);
 			actor->Transform->GetParent()->AddChild(actor->Transform);
-		
+
 
 		// Add actor to the current scene
 		Game().CurrentScene().AddActor(actor);
 
 		return actor;
 	}
+
+
 
 	void Actor::Destroy(Actor* actor)
 	{
@@ -119,6 +117,11 @@
 	}
 
 	void Actor::OnCollision(Actor* other)
+	{
+
+	}
+
+	void SetEnabled(bool value)
 	{
 
 	}

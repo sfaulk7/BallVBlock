@@ -20,12 +20,16 @@ protected:
 public:
 	
 	
-	Actor(const char* name = nullptr);
+	Actor(const char* name);
 	~Actor();
 	Transform2D GetTransform();
 	void SetTransform();
 	const char* Name(const char* name);
-	virtual void Instantiate();
+	Actor* Instantiate(Actor* actor,
+		Transform2D* parent,
+		MathLibrary::Vector2 position,
+		float rotation,
+		const char* Name);
     void Destroy(Actor* other);
 	virtual void OnEnable();
 	virtual void OnDisable();
@@ -33,8 +37,19 @@ public:
 	virtual void Update(double deltatime);
 	virtual void End();
 	virtual void OnCollision(Actor* other);
-	bool Started(bool started) { m_started = started; }
-	bool Enabled(bool enabled) { m_enabled = enabled; }
+	//bool Started(bool started) { m_started = started; }
+	//bool Enabled(bool enabled) { m_enabled = enabled; }
+	
+	bool GetStarted()
+	{
+		return m_started;
+	}
+	bool GetEnabled()
+	{
+		return m_enabled;
+	}
+	void SetEnabled(bool value);
+
 	//void AddComponentToRemove(Component comp);
 	//void RemoveComponentsToBeRemoved();
 	
