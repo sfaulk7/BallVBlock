@@ -1,8 +1,8 @@
 #pragma once
-
 #include "raylib.h"
+#include "Engine/Actor.h"
 
-class BlockActor
+class BlockActor : public Actor
 {
 public:
 
@@ -19,10 +19,8 @@ private:
 
 	Color GetTileColor(int tileValue);
 
-private:
 
-	int m_windowWidth = 800;
-	int m_windowHeight = 800;
+	Color m_color;
 
 	static const int ROWS = 5;
 	static const int COLS = 15;

@@ -5,36 +5,11 @@
 
 BlockActor::BlockActor()
 {
-
+	int colorValue = rand() % 6;
+	m_color = GetTileColor(colorValue);
 }
 
 BlockActor::~BlockActor()
-{
-
-}
-
-void BlockActor::Load()
-{
-	// Task1:
-	// Initialise all values in m_tiles array to a random
-	// value between 0 and 5 exclusive;
-	// -----------------------------------------------------
-	// write your code here
-
-	/*for (int i = 0; i < (ROWS * COLS); i++)
-	{
-		m_tiles[i] = GetRandomValue(0, 5);
-	}*/
-
-	for (int i = 0; i < ROWS * COLS; i++)
-	{
-		m_tiles[i] = rand() % 6;
-	}
-
-	// -----------------------------------------------------
-}
-
-void BlockActor::Unload()
 {
 
 }

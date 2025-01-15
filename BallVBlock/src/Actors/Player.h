@@ -1,9 +1,8 @@
 #pragma once
 #include "raylib.h"
+#include "Engine/Actor.h"
 
-class Actor;
-
-class Player
+class Player : public Actor
 {
 public:
 	float Speed = 50;
@@ -11,5 +10,4 @@ public:
 private:
 	Color m_color = Color(RED);
 protected:
-
 };

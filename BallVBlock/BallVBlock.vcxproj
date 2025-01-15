@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Actors\Player.cpp" />
     <ClCompile Include="src\Components\BlockSpawnComponent.cpp" />
     <ClCompile Include="src\Engine\Actor.cpp" />
     <ClCompile Include="src\Actors\BlockActor.cpp" />
@@ -146,12 +147,12 @@
     <ClCompile Include="src\Engine\Component.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Actors\PlayerActor.cpp" />
     <ClCompile Include="src\Engine\Scene.cpp" />
     <ClCompile Include="src\Engine\Transform2D.cpp" />
     <ClCompile Include="src\Scenes\PlayScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Actors\Player.h" />
     <ClInclude Include="src\Components\BlockSpawnComponent.h" />
     <ClInclude Include="src\Engine\Actor.h" />
     <ClInclude Include="src\Actors\BlockActor.h" />
@@ -159,7 +160,6 @@
     <ClInclude Include="src\Engine\Component.h" />
     <ClInclude Include="src\Engine\DynamicArray.h" />
     <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Actors\PlayerActor.h" />
     <ClInclude Include="src\Engine\Scene.h" />
     <ClInclude Include="src\Scenes\PlayScene.h" />
     <ClInclude Include="src\Engine\Transform2D.h" />

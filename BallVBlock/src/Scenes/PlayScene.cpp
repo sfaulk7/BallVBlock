@@ -17,7 +17,7 @@ void Start()
 
 void Update(double deltaTime)
 {
-    Actor 
+
 }
 
 void End()
