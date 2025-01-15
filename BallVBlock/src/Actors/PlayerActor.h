@@ -2,9 +2,12 @@
 #include "raylib.h"
 #include "Engine/Actor.h"
 
-class Player : public Actor
+class PlayerActor : public Actor
 {
 public:
+	PlayerActor();
+	~PlayerActor();
+
 	float Speed = 50;
 	virtual void Update(double deltaTime);
 private:

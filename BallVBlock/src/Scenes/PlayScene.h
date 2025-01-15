@@ -19,8 +19,6 @@ public:
 
     void Update(double deltaTime);
 
-    void End()
-    {
-        End();
-    }
+    void End();
+  
 };

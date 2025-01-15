@@ -29,8 +29,8 @@ public:
 
 private:
 
-	DynamicArray<Scene*> m_scenes;
-	Scene* m_currentScene;
+	static DynamicArray<Scene*> m_scenes;
+	static Scene* m_currentScene;
 
 	//Scenes
 	Scene* m_playScene;

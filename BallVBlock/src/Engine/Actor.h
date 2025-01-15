@@ -63,6 +63,7 @@ public:
 		return result;
 	}
 	
+	
 	Actor();
 	Actor(const char* name);
 	~Actor();
