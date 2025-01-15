@@ -19,7 +19,11 @@
 
 	
 
-	Actor::Actor(const char* name = "Actor") 
+Actor::Actor()
+{
+}
+
+Actor::Actor(const char* name = "Actor")
 	{
 		const char* Name;
 		Transform2D* Transform;

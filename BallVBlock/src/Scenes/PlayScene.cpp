@@ -5,22 +5,27 @@
 #include "Engine/DynamicArray.h"
 #include "Engine/Component.h"
 #include "Scenes/PlayScene.h"
+#include "Actors/PlayerActor.h"
 
 
-void Start()
+void PlayScene::Start()
 {
-    Start();
+    Scene::Start();
+    SetTargetFPS(60);
 
 
+    Actor* m_thePlayerActor = Actor::Instantiate(new PlayerActor(), nullptr, MathLibrary::Vector2(450, 400), 0, "The PlayerActor");
+    //PlayScene::AddActor(m_thePlayerActor);
 }
 
 
-void Update(double deltaTime)
+void PlayScene::Update(double deltaTime)
 {
+    Scene::Update(deltaTime);
 
 }
 
-void End()
+void PlayScene::End()
 {
-    End();
+    
 }

@@ -6,10 +6,15 @@
 #include "Engine/Component.h"
 #include "Scenes/PlayScene.h"
 
-
+Scene* Game::m_currentScene = nullptr;
+DynamicArray<Scene*> Game::m_scenes;
 Game::Game()
 {
-
+	if (m_currentScene == nullptr)
+	{
+		m_currentScene = this->m_currentScene;
+	}
+	m_playScene = new PlayScene();
 }
 
 Game::~Game()
@@ -89,13 +94,11 @@ void Game::Run()
 	long lastTime = 0;
 	double deltaTime = 1;
 
-	m_playScene = new PlayScene();
-
 	AddScene(m_playScene);
 
 	SetCurrentScene(m_playScene);
 
-	m_currentScene->Start();
+	/*m_currentScene->Start();*/
 
 	while (!WindowShouldClose())
 	{
@@ -108,6 +111,10 @@ void Game::Run()
 		EndDrawing();
 		Update(GetFrameTime());
 	}
+
+	m_currentScene->End();
+
+	CloseWindow();
 }
 
 void Game::Update(float deltaTime)

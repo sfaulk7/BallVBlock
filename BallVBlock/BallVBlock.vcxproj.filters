@@ -60,7 +60,7 @@
     <ClCompile Include="src\Components\BlockSpawnComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actors\Player.cpp">
+    <ClCompile Include="src\Actors\PlayerActor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,7 +95,7 @@
     <ClInclude Include="src\Components\BlockSpawnComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actors\Player.h">
+    <ClInclude Include="src\Actors\PlayerActor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
