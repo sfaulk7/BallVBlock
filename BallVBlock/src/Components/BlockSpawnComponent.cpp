@@ -37,7 +37,7 @@ void BlockSpawnComponent::Update(double deltaTime)
                 MathLibrary::Vector2 offset = MathLibrary::Vector2(100, 100);
                 //Actor Block = Actor.Instantiate(new BlockActor(), Owner.Transform, offset);
 
-                Actor* Block = Block->Instantiate(BlockActor(), GetOwner()->Transform, offset, 0, "Block");
+                Actor* Block = Actor::Instantiate(new BlockActor(), nullptr, offset, 0, "Block");
 
 
 

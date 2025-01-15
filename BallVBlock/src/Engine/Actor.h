@@ -63,13 +63,13 @@ public:
 		return result;
 	}
 	
-	
+	Actor();
 	Actor(const char* name);
 	~Actor();
 	Transform2D GetTransform();
 	void SetTransform();
 	const char* Name(const char* name);
-	Actor* Instantiate(Actor* actor,
+	static Actor* Instantiate(Actor* actor,
 		Transform2D* parent,
 		MathLibrary::Vector2 position,
 		float rotation,

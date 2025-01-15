@@ -19,121 +19,126 @@
 
 	
 
-	Actor::Actor(const char* name = "Actor") 
+Actor::Actor()
+{
+
+}
+
+Actor::Actor(const char* name = "Actor")
+{
+	const char* Name;
+	Transform2D* Transform;
+	Name = name;
+	Transform = new Transform2D();
+
+	//COMPONENTS
+	//m_componets = new Component[0];
+	//m_componetsToRemove = new Component[0];
+
+}
+
+void Actor::SetTransform()
+{
+
+}
+
+Actor::~Actor()
+{
+	delete Transform;
+}
+
+const char* Actor::Name(const char* name)
+{
+	return name;
+}
+
+Actor* Actor::Instantiate(Actor* actor,
+	Transform2D* parent,
+	MathLibrary::Vector2 position,
+	float rotation,
+	const char* Name)
+{
+	// Set the actor transfrom values
+	//actor->Transform.SetLocalPosition = position;
+	actor->Transform->SetLocalPosition(position);
+	actor->Transform->Rotate(rotation);
+	actor->Name(Name);
+	if (parent != nullptr)
+		//Transform2D* parent.AddChild(actor->Transform);
+		actor->Transform->GetParent()->AddChild(actor->Transform);
+
+
+	// Add actor to the current scene
+	Game().CurrentScene()->AddActor(actor);
+
+	return actor;
+}
+
+
+
+void Actor::Destroy(Actor* actor)
+{
+	// Remove all the children
+	for (Transform2D* child : actor->Transform->GetChildren())
 	{
-		const char* Name;
-		Transform2D* Transform;
-		Name = name;
-		Transform = new Transform2D();
-
-		//COMPONENTS
-		//m_componets = new Component[0];
-		//m_componetsToRemove = new Component[0];
-
+		actor->Transform->RemoveChild(child);
 	}
 
-	void Actor::SetTransform()
-	{
+	if (actor->Transform->GetParent() != nullptr)
+		actor->Transform->GetParent()->RemoveChild(actor->Transform);
 
-	}
+	Game().CurrentScene()->RemoveActor(actor);
+}
 
-	Actor::~Actor()
-	{
-		delete Transform;
-	}
+void Actor::OnEnable()
+{
 
-	const char* Actor::Name(const char* name)
-	{
-		return name;
-	}
+}
 
-	Actor* Actor::Instantiate(Actor* actor,
-		Transform2D* parent,
-		MathLibrary::Vector2 position,
-		float rotation,
-		const char* Name)
-	{
-		// Set the actor transfrom values
-		//actor->Transform.SetLocalPosition = position;
-		actor->Transform->SetLocalPosition(position);
-		actor->Transform->Rotate(rotation);
-		actor->Name(Name);
-		if (parent != nullptr)
-			//Transform2D* parent.AddChild(actor->Transform);
-			actor->Transform->GetParent()->AddChild(actor->Transform);
-
-
-		// Add actor to the current scene
-		Game().CurrentScene()->AddActor(actor);
-
-		return actor;
-	}
-
-
-
-	void Actor::Destroy(Actor* actor)
-	{
-		// Remove all the children
-		for (Transform2D* child : actor->Transform->GetChildren())
-		{
-			actor->Transform->RemoveChild(child);
-		}
-
-		if (actor->Transform->GetParent() != nullptr)
-			actor->Transform->GetParent()->RemoveChild(actor->Transform);
-
-		Game().CurrentScene()->RemoveActor(actor);
-	}
-
-	void Actor::OnEnable()
-	{
-
-	}
-
-	void Actor::OnDisable()
-	{
+void Actor::OnDisable()
+{
 		
-	}
+}
 
 
-	// Get and set the collider
+// Get and set the collider
 
-	void Actor::Start()
-	{
-		m_started = true;
+void Actor::Start()
+{
+	m_started = true;
 
-		Transform->UpdateTransforms();
+	Transform->UpdateTransforms();
 		
-	}
+}
 
-	void Actor::Update(double deltatime)
+void Actor::Update(double deltatime)
+{
+	// Need component for update function
+	for (size_t i = 0; i < m_components.Length(); i++)
 	{
-		// Need component for update function
-		for (size_t i = 0; i < m_components.Length(); i++)
-		{
-			if (!m_components[i]->Started)
-				m_components[i]->Start();
+		if (!m_components[i]->Started)
+			m_components[i]->Start();
 
-			m_components[i]->Update(deltatime);
-		}
-		m_components.Remove(m_componentsToBeRemoved);
+		m_components[i]->Update(deltatime);
 	}
+	m_components.Remove(m_componentsToBeRemoved);
+}
 
-	void Actor::End()
+void Actor::End()
+{
+	// Need component for end function
+	for (size_t i = 0; i < m_components.Length(); i++)
 	{
-		// Need component for end function
-		for (size_t i = 0; i < m_components.Length(); i++)
-		{
-			m_components[i]->End();
-		}
+		m_components[i]->End();
 	}
+}
 
-	void Actor::OnCollision(Actor* other)
-	{
+void Actor::OnCollision(Actor* other)
+{
 
-	}
+}
 
-	void SetEnabled(bool value)
-	{
+void SetEnabled(bool value)
+{
 
-	}
+}

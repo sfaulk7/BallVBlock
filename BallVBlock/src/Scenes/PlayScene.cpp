@@ -9,7 +9,7 @@
 
 void Start()
 {
-    Start();
+
 
 
 }
@@ -22,5 +22,5 @@ void Update(double deltaTime)
 
 void End()
 {
-    End();
+
 }

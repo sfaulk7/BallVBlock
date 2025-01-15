@@ -15,7 +15,7 @@ public:
 	bool hit = false;
 	void AddActor(Actor* actor);
 	bool RemoveActor(Actor* actor);
-	void Start();
+	static void Start();
 	void Update(double deltatime);
 	void End();
 	
