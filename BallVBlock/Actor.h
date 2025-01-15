@@ -1,6 +1,6 @@
 #pragma once
 #include "Transform2D.h"
-#include "Component.h"]
+#include "Component.h"
 
 class Scene;
 

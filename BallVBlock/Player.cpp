@@ -2,20 +2,23 @@
 #include "raylib.h"
 #include "Transform2D.h"
 #include "Actor.h"
+#include <Vector2.h>
 
 void Player::Update(double deltaTime)
 {
-	base.Update(deltaTime);
+	Actor::Update(deltaTime);
 
 	// Movement
-	Vector2 movementInput = new Vector2();
-	if (IsKeyDown(KEY_A)
+	Vector2 *movementInput = new Vector2();
+	if (IsKeyDown(KEY_A))
+		Transform->Translate(-5, 0);
+	if (IsKeyDown(KEY_S))
+		Transform->Translate(5, 0);
 
-	movementInput.x += Raylib.IsKeyDown(KeyboardKey.D);
-	Vector2 deltaMovement = movementInput.Normalized * Speed * (float)deltaTime;
+	MathLibrary::Vector2 deltaMovement = MathLibrary::Vector2().getNormalized() * Speed * (float)deltaTime;
 
-	if (deltaMovement.Magnitude != 0)
-		Transform.LocalPosition += (deltaMovement);
+	if (deltaMovement.getMagnitude() != 0)
+		Transform->SetLocalPosition(deltaMovement);
 
-	Raylib.DrawCircleV(Transform.GlobalPosition, (Transform.GlobalScale.x / 2 * 100), m_color);
+	DrawRectangle((GetScreenWidth() * .45), (GetScreenHeight() * .9), 100, 10, m_color);
 }
