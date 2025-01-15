@@ -11,7 +11,7 @@ private:
 	bool m_enabled;
 
 	DynamicArray<Component*> m_components;
-	DynamicArray<Component*> m_componentsToRemove;
+	DynamicArray<Component*> m_componentsToBeRemove;
 
 protected:
 	/*void Started(bool started) { m_started = started; }
