@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "raylib.h"
-#include "Transform2D.h"
-#include "Actor.h"
+#include "Engine/Transform2D.h"
+#include "Engine/Actor.h"
 #include <Vector2.h>
 
 void Player::Update(double deltaTime)
