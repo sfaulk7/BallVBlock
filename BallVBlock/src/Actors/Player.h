@@ -2,14 +2,12 @@
 #include "raylib.h"
 #include "Engine/Actor.h"
 
-
 class Player : public Actor
 {
 public:
 	float Speed = 50;
-	void Update(double deltaTime);
+	virtual void Update(double deltaTime);
 private:
 	Color m_color = Color(RED);
 protected:
-
 };

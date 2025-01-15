@@ -19,21 +19,18 @@
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{aca54b34-1762-4871-8556-4d1510fb4253}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Actor">
-      <UniqueIdentifier>{f17e0e6a-4963-4ddc-a588-f6f48793344c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Scene">
-      <UniqueIdentifier>{c0e62eac-125a-45f1-b934-90063e99659b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Transform2D">
       <UniqueIdentifier>{95b06b5d-e5fd-4435-930e-3d1cf72c160e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Actors">
+      <UniqueIdentifier>{f17e0e6a-4963-4ddc-a588-f6f48793344c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scenes">
+      <UniqueIdentifier>{c0e62eac-125a-45f1-b934-90063e99659b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Actors\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Game.cpp">
@@ -43,22 +40,31 @@
       <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Actor.cpp">
-      <Filter>Engine\Actor</Filter>
+      <Filter>Engine\Actors</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Transform2D.cpp">
       <Filter>Engine\Transform2D</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Scene.cpp">
-      <Filter>Engine\Scene</Filter>
+      <Filter>Engine\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Actors\BlockActor.cpp">
+      <Filter>Engine\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\PlayScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\BlockSpawnComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actors\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Actors\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -66,18 +72,30 @@
       <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Actor.h">
-      <Filter>Engine\Actor</Filter>
+      <Filter>Engine\Actors</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Transform2D.h">
       <Filter>Engine\Transform2D</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Scene.h">
-      <Filter>Engine\Scene</Filter>
+      <Filter>Engine\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Collider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\DynamicArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\PlayScene.h">
+      <Filter>Engine\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actors\BlockActor.h">
+      <Filter>Engine\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\BlockSpawnComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actors\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

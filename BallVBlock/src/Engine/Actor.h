@@ -1,8 +1,9 @@
 #pragma once
-#include "Transform2D.h"
-#include "Component.h"
+#include "Engine/Transform2D.h"
+#include "Engine/Component.h"
 
 class Scene;
+class Component;
 
 class Actor
 {
