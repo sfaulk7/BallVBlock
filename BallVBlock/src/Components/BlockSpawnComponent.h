@@ -4,7 +4,7 @@
 #include "Vector2.h"
 #include "Engine/Component.h"
 
-class EnemySpawnComponent : public Component
+class BlockSpawnComponent : public Component
 {
 public:
 
@@ -14,7 +14,7 @@ public:
     Color GetColor();
     Color SetColor();
 
-    EnemySpawnComponent(Actor* owner);
+    BlockSpawnComponent(Actor* owner);
 
     void Update(double deltaTime);
 

@@ -1,40 +1,53 @@
 #include "BlockSpawnComponent.h"
+#include "Game.h"
+#include "Engine/Actor.h"
+#include "Engine/Transform2D.h"
+#include "Engine/Scene.h"
+#include "Engine/DynamicArray.h"
+#include "Engine/Component.h"
+#include "Scenes/PlayScene.h"
 
-Color EnemySpawnComponent::GetColor()
+Color BlockSpawnComponent::GetColor()
 {
     return Color();
 }
 
-Color EnemySpawnComponent::SetColor()
+Color BlockSpawnComponent::SetColor()
 {
     return Color();
 }
 
-EnemySpawnComponent::EnemySpawnComponent(Actor* owner)
+BlockSpawnComponent::BlockSpawnComponent(Actor* owner)
 {
+
 }
 
-void EnemySpawnComponent::Update(double deltaTime)
+void BlockSpawnComponent::Update(double deltaTime)
 {
     if (Enabled)
     {
-        base.Update(deltaTime);
+        Update(deltaTime);
 
         if (waveStarted == false)
         {
             //First Line of defense
             for (int i = -1; i <= 1; i++)
             {
-                MathLibrary::Vector2 offset = new MathLibrary::Vector2(50 * i, 100);
-                Actor enemy = Actor.Instantiate(new EnemyActor(), Owner.Transform, offset);
-                enemy.Collider = new CircleCollider(enemy, 25);
+                MathLibrary::Vector2 offset = MathLibrary::Vector2(50 * i, 100);
+                //Actor Block = Actor.Instantiate(new BlockActor(), Owner.Transform, offset);
+
+                Actor* Block = Block->Instantiate(Block, GetOwner()->Transform, offset);
+
+
+
+                //Block.Collider = new CircleCollider(Block, 25);
             }
 
             for (int i = -1; i <= 1; i++)
             {
                 MathLibrary::Vector2 offset = new MathLibrary::Vector2(50 * i, 150);
-                Actor enemy = Actor.Instantiate(new EnemyActor(), Owner.Transform, offset);
-                enemy.Collider = new CircleCollider(enemy, 25);
+                Actor Block = Actor.Instantiate(new BlockActor(), Owner.Transform, offset);
+                Block.Collider = new CircleCollider(Block, 25);
             }
 
             waveStarted = true;
