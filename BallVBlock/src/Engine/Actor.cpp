@@ -92,7 +92,7 @@
 
 	void Actor::OnDisable()
 	{
-
+		
 	}
 
 
@@ -108,15 +108,24 @@
 
 	void Actor::Update(double deltatime)
 	{
-		for (int i = 0; i < m_components.Length(); i++)
+		// Need component for update function
+		for (size_t i = 0; i < m_components.Length(); i++)
 		{
+			if (!m_components[i]->Started)
+				m_components[i]->Start();
 
+			m_components[i]->Update(deltatime);
 		}
+		m_components.Remove(m_componentsToBeRemoved);
 	}
 
 	void Actor::End()
 	{
 		// Need component for end function
+		for (size_t i = 0; i < m_components.Length(); i++)
+		{
+			m_components[i]->End();
+		}
 	}
 
 	void Actor::OnCollision(Actor* other)
@@ -128,6 +137,3 @@
 	{
 
 	}
-
-	// Component functions below
-
