@@ -36,8 +36,7 @@
 
 	void Scene::Start()
 	{
-		// Two pointers for a list
-		Actor** m_actors;
+
 	}
 
 	void Scene::Update(double deltaTime)

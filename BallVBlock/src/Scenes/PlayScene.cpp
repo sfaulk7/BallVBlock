@@ -10,7 +10,6 @@
 
 void PlayScene::Start()
 {
-    Scene::Start();
     SetTargetFPS(60);
 
 
