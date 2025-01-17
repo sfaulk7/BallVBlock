@@ -8,65 +8,78 @@
 //Getters and Setters
 Transform2D::Transform2D(Actor* owner)
 {
+	m_localMatrix = new MathLibrary::Matrix3(
+		1, 0, 0,
+		0, 1, 0,
+		0, 0, 1);
+	m_globalMatrix = new MathLibrary::Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	m_localTranslation = new MathLibrary::Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	m_localRotation = new MathLibrary::Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	m_localScale = new MathLibrary::Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+
 	m_owner = owner;
 	DynamicArray<Transform2D*> m_children;
 }
 Transform2D::~Transform2D()
 {
-
+	delete m_localMatrix;
+	delete m_globalMatrix;
+	delete m_localTranslation;
+	delete m_localRotation;
+	delete m_localScale;
 }
 
-MathLibrary::Matrix3 Transform2D::GetLocalRotation() 
+MathLibrary::Matrix3* Transform2D::GetLocalRotation() 
 {
 	return m_localRotation;
 }
 void Transform2D::SetLocalRotation()
 {
-	m_localRotationAngle = -(float)atan2(m_localRotation.m01, m_localRotation.m00);
+	m_localRotationAngle = -(float)atan2(m_localRotation->m01, m_localRotation->m00);
 	UpdateTransforms();
 }
 
 MathLibrary::Vector2 Transform2D::GetLocalPosition()
 {
-	return MathLibrary::Vector2(m_localTranslation.m02, m_localTranslation.m12);
+	return MathLibrary::Vector2(m_localTranslation->m02, m_localTranslation->m12);
 }
 void Transform2D::SetLocalPosition(MathLibrary::Vector2 value)
 {
-	m_localTranslation.m02 = value.x;
-	m_localTranslation.m12 = value.y;
+	m_localTranslation->m02 = value.x;
+	m_localTranslation->m12 = value.y;
 	Transform2D::UpdateTransforms();
 }
 
 MathLibrary::Vector2 Transform2D::GetLocalScale()
 {
-	return MathLibrary::Vector2(m_localMatrix.m00, m_localMatrix.m11);
+	return MathLibrary::Vector2(m_localMatrix->m00, m_localMatrix->m11);
 }
 void Transform2D::SetLocalScale(MathLibrary::Vector2 value)
 {
-	m_localScale.m00 = value.x;
-	m_localScale.m11 = value.y;
+	m_localScale->m00 = value.x;
+	m_localScale->m11 = value.y;
 	UpdateTransforms();
 }
 
 MathLibrary::Vector2 Transform2D::GetGlobalPosition()
 {
-	return MathLibrary::Vector2(m_globalMatrix.m02, m_globalMatrix.m12);
+	return MathLibrary::Vector2(m_globalMatrix->m02, m_globalMatrix->m12);
 }
 MathLibrary::Vector2 Transform2D::GetGlobalScale()
 {
-	MathLibrary::Vector2 xAxis = MathLibrary::Vector2(m_globalMatrix.m00, m_globalMatrix.m10);
-	MathLibrary::Vector2 yAxis = MathLibrary::Vector2 (m_globalMatrix.m01, m_globalMatrix.m11);
+	MathLibrary::Vector2 xAxis = MathLibrary::Vector2(m_globalMatrix->m00, m_globalMatrix->m10);
+	MathLibrary::Vector2 yAxis = MathLibrary::Vector2 (m_globalMatrix->m01, m_globalMatrix->m11);
 
 	return MathLibrary::Vector2(xAxis.getMagnitude(), yAxis.getMagnitude());
 }
 
 MathLibrary::Vector2 Transform2D::GetForward()
 {
-	return MathLibrary::Vector2(m_globalMatrix.m00, m_globalMatrix.m10).normalize();
+	return MathLibrary::Vector2(m_globalMatrix->m00, m_globalMatrix->m10).normalize();
 }
 MathLibrary::Vector2 Transform2D::GetRight()
 {
-	return MathLibrary::Vector2(m_globalMatrix.m01, m_globalMatrix.m11).normalize();
+	return MathLibrary::Vector2(m_globalMatrix->m01, m_globalMatrix->m11).normalize();
 }
 
 float Transform2D::GetLocalRotationAngle()
@@ -75,7 +88,7 @@ float Transform2D::GetLocalRotationAngle()
 }
 float Transform2D::GetGlobalRotationAngle()
 {
-	return (float)atan2(m_globalMatrix.m01, m_globalMatrix.m00);
+	return (float)atan2(m_globalMatrix->m01, m_globalMatrix->m00);
 }
 
 Transform2D* Transform2D::GetParent()
@@ -95,7 +108,7 @@ void Transform2D::Translate(float x, float y)
 }
 void Transform2D::Rotate(float radians)
 {
-	m_localRotation = MathLibrary::Matrix3::createRotation(m_localRotationAngle + radians);
+	*m_localRotation = MathLibrary::Matrix3::createRotation(m_localRotationAngle + radians);
 }
 
 void Transform2D::AddChild(Transform2D* child)
@@ -134,19 +147,19 @@ bool Transform2D::RemoveChild(Transform2D* child)
 
 void Transform2D::UpdateTransforms()
 {
-	m_localMatrix = m_localTranslation * m_localRotation * m_localScale;
+	*m_localMatrix = (*m_localTranslation) * (*m_localRotation) * (*m_localScale);
 
 	// if parent is not null
 	if (m_parent != nullptr)
 	{
 		// Global transform = parent global transform * local transform
-		m_globalMatrix = m_parent->m_globalMatrix * m_localMatrix;
+		*m_globalMatrix = *m_parent->m_globalMatrix * (*m_localMatrix);
 	}
 	//else
 	else
 	{
 		//global transform - local transform
-		m_globalMatrix = m_localMatrix;
+		*m_globalMatrix = *m_localMatrix;
 	}
 
 	//Update Children

@@ -21,12 +21,16 @@
 
 Actor::Actor()
 {
+	const char* Name;
+	//Transform2D* Transform;
+	Name = "Actor";
+	Transform = new Transform2D();
 }
 
 Actor::Actor(const char* name = "Actor")
 	{
 		const char* Name;
-		Transform2D* Transform;
+		//Transform2D* Transform;
 		Name = name;
 		Transform = new Transform2D();
 
@@ -57,14 +61,16 @@ Actor::Actor(const char* name = "Actor")
 		float rotation,
 		const char* Name)
 	{
-		// Set the actor transfrom values
-		//actor->Transform.SetLocalPosition = position;
-		actor->Transform->SetLocalPosition(position);
-		actor->Transform->Rotate(rotation);
-		actor->Name(Name);
 		if (parent != nullptr)
 			//Transform2D* parent.AddChild(actor->Transform);
-			actor->Transform->GetParent()->AddChild(actor->Transform);
+			actor->GetTransform()->GetParent()->AddChild(actor->Transform);
+
+		// Set the actor transfrom values
+		//actor->Transform.SetLocalPosition = position;
+		actor->GetTransform()->SetLocalPosition(position);
+		actor->GetTransform()->Rotate(rotation);
+		actor->Name(Name);
+		
 
 
 		// Add actor to the current scene

@@ -67,7 +67,10 @@ public:
 	Actor();
 	Actor(const char* name);
 	~Actor();
-	Transform2D GetTransform();
+	Transform2D* GetTransform()
+	{
+		return Transform;
+	}
 	void SetTransform();
 	const char* Name(const char* name);
 	static Actor* Instantiate(Actor* actor,
