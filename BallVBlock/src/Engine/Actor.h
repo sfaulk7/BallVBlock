@@ -46,7 +46,7 @@ public:
 		int count = 0;
 		for (int i = 0; i < m_components.Length(); i++)
 		{
-			if (m_components[i] == T)
+			if (m_components[i] == temp) // THIS WAS BUGGING "temp" WAS "T" CHANGING TO "temp" FIXED IT BUT I'M NOT CERTIAN ABOUT THAT CHANGE
 			{
 				temp[count] = (T)m_components[i];
 				count++;
