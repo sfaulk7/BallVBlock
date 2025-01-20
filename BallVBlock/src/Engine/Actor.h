@@ -25,8 +25,8 @@ public:
 	template <typename T>
 	void AddComponent(const T& value)
 	{
-		T component = new T();
-		component.Owner = this;
+		T* component = new T(); //
+		component.Owner = this; 
 		return AddComponent(component);
 	}
 	template <typename T>
@@ -46,7 +46,7 @@ public:
 		int count = 0;
 		for (int i = 0; i < m_components.Length(); i++)
 		{
-			if (m_components[i] == T)
+			if (m_components[i] == temp) // THIS WAS BUGGING "temp" WAS "T" CHANGING TO "temp" FIXED IT BUT I'M NOT CERTIAN ABOUT THAT CHANGE
 			{
 				temp[count] = (T)m_components[i];
 				count++;
@@ -67,7 +67,10 @@ public:
 	Actor();
 	Actor(const char* name);
 	~Actor();
-	Transform2D GetTransform();
+	Transform2D* GetTransform()
+	{
+		return Transform;
+	}
 	void SetTransform();
 	const char* Name(const char* name);
 	static Actor* Instantiate(Actor* actor,

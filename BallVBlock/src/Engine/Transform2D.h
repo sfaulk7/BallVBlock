@@ -18,7 +18,7 @@ public:
 	~Transform2D();
 
 	//Getters and Setters
-	MathLibrary::Matrix3 GetLocalRotation();
+	MathLibrary::Matrix3* GetLocalRotation();
 	void SetLocalRotation();
 
 	MathLibrary::Vector2 GetLocalPosition();
@@ -64,12 +64,12 @@ public:
 
 private:
 
-	MathLibrary::Matrix3 m_localMatrix;
-	MathLibrary::Matrix3 m_globalMatrix;
+	MathLibrary::Matrix3* m_localMatrix;
+	MathLibrary::Matrix3* m_globalMatrix;
 
-	MathLibrary::Matrix3 m_localTranslation;
-	MathLibrary::Matrix3 m_localRotation;
-	MathLibrary::Matrix3 m_localScale;
+	MathLibrary::Matrix3* m_localTranslation;
+	MathLibrary::Matrix3* m_localRotation;
+	MathLibrary::Matrix3* m_localScale;
 
 	Actor* m_owner;
 

@@ -8,6 +8,7 @@
 
 Scene* Game::m_currentScene = nullptr;
 DynamicArray<Scene*> Game::m_scenes;
+
 Game::Game()
 {
 	if (m_currentScene == nullptr)
@@ -98,14 +99,13 @@ void Game::Run()
 
 	SetCurrentScene(m_playScene);
 
-	/*m_currentScene->Start();*/
-
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
 
 		m_currentScene->Update(deltaTime);
+
 		//DrawRectangle((GetScreenWidth() * .45), (GetScreenHeight() * .9), 100, 10, WHITE);
 
 		EndDrawing();

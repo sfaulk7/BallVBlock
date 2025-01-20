@@ -14,6 +14,7 @@ public:
     float waveCountDown;
     float waveTimer;
     int waveCount;
+    Actor* m_thePlayerActor;
 
     void Start();
 
