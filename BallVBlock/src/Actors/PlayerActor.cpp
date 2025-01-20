@@ -15,7 +15,7 @@ void PlayerActor::Update(double deltaTime)
 {
 	Actor::Update(deltaTime);
 
-	// Movement
+	// Player Movement
 	Vector2* movementInput = new Vector2();
 	if (IsKeyDown(KEY_A))
 		Transform->Translate(-5, 0);
