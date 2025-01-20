@@ -9,7 +9,7 @@ public:
 	Component(Actor* owner = nullptr);
 	~Component();
 
-	Actor* m_owner;
+	Actor* Owner;
 
 	bool Enabled;
 	bool Started;
@@ -31,6 +31,7 @@ public:
 	virtual void End();
 
 private:
+	Actor* m_owner;
 	bool m_enabled;
 	bool m_started;
 
