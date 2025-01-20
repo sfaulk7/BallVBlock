@@ -12,7 +12,7 @@ void PlayScene::Start()
 {
     SetTargetFPS(60);
 
-
+    // Instantiating the player
     Actor* m_thePlayerActor = Actor::Instantiate(new PlayerActor(), nullptr, MathLibrary::Vector2(450, 400), 0, "The PlayerActor");
     //PlayScene::AddActor(m_thePlayerActor);
 }
