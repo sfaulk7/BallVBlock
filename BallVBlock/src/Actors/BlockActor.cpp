@@ -1,6 +1,7 @@
 #include "BlockActor.h"
 #include "raylib.h"
 #include <stdlib.h>
+#include "Engine/Actor.h"
 
 
 BlockActor::BlockActor()
