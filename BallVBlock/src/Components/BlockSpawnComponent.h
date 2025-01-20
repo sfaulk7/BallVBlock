@@ -8,13 +8,18 @@ class BlockSpawnComponent : public Component
 {
 public:
 
+    BlockSpawnComponent();
+    BlockSpawnComponent(Actor* owner);
+    ~BlockSpawnComponent();
+
     bool waveStarted = false;
     bool waveFinished = false;
 
     Color GetColor();
     Color SetColor();
 
-    BlockSpawnComponent(Actor* owner);
+
+    void SetRandomColor(Color color);
 
     void Update(double deltaTime);
 

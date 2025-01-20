@@ -25,8 +25,8 @@ public:
 	template <typename T>
 	void AddComponent(const T& value)
 	{
-		T component = new T();
-		component.Owner = this;
+		T* component = new T(); //
+		component.Owner = this; 
 		return AddComponent(component);
 	}
 	template <typename T>

@@ -3,8 +3,6 @@
 #include "Engine/Actor.h"
 #include "Components/BlockSpawnComponent.h"
 
-void Actor::AddComponent<BlockSpawnComponent>(BlockSpawnComponent());
-
 class BlockSpawnActor : public Actor
 {
 public:
@@ -13,8 +11,7 @@ public:
 	BlockSpawnActor();
 	~BlockSpawnActor();
 
-	void SetRandomColor(Color color);
-
+	virtual void Start();
 	virtual void Update(double deltaTime);
 
 private:

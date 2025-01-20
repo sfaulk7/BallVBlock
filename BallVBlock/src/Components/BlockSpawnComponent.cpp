@@ -8,6 +8,21 @@
 #include "Scenes/PlayScene.h"
 #include "Actors/BlockActor.h"
 
+BlockSpawnComponent::BlockSpawnComponent()
+{
+
+}
+
+BlockSpawnComponent::BlockSpawnComponent(Actor* owner)
+{
+
+}
+
+BlockSpawnComponent::~BlockSpawnComponent()
+{
+
+}
+
 Color BlockSpawnComponent::GetColor()
 {
     return Color();
@@ -18,38 +33,31 @@ Color BlockSpawnComponent::SetColor()
     return Color();
 }
 
-BlockSpawnComponent::BlockSpawnComponent(Actor* owner)
-{
 
+void BlockSpawnComponent::SetRandomColor(Color color)
+{
+	int colorNumber = GetRandomValue(1, 6);
+
+	switch (colorNumber)
+	{
+	case 1: color = RED;
+	case 2: color = GREEN;
+	case 3: color = BLUE;
+	case 4: color = YELLOW;
+	case 5: color = WHITE;
+	case 6: color = BLACK;
+	}
 }
 
 void BlockSpawnComponent::Update(double deltaTime)
 {
-    if (Enabled)
+
+    for (int i = -1; i <= 1; i++)
     {
-        Update(deltaTime);
 
-        if (waveStarted == false)
-        {
-            //First Line of defense
-            for (int i = -1; i <= 1; i++)
-            {
-                MathLibrary::Vector2 offset = MathLibrary::Vector2(100 + (i * 15), 100 + (i * 15));
-                //Actor Block = Actor.Instantiate(new BlockActor(), Owner.Transform, offset);
+        MathLibrary::Vector2 offset = MathLibrary::Vector2(100 + (i * 15), 100 + (i * 15));
 
-                Actor* Block = Actor::Instantiate(new BlockActor(), GetOwner()->Transform, offset, 0, "Block");
+        Actor* block = Actor::Instantiate(new BlockActor(), GetOwner()->Transform, offset, 0, "Block");
 
-
-
-                //Block.Collider = new CircleCollider(Block, 25);
-            }
-
-            waveStarted = true;
-        }
-
-        if (waveFinished == true)
-        {
-            waveFinished = false;
-        }
     }
 }
