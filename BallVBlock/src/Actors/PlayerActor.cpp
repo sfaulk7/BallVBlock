@@ -24,7 +24,8 @@ void PlayerActor::Start()
 		Transform->SetLocalPosition(MathLibrary::Vector2((GetScreenWidth() * .45), (GetScreenHeight() * .9)));
 	}
 
-	m_collider = new CircleCollider(this, 20);
+	m_collider = new CircleCollider(this, 50);
+	dynamic_cast<CircleCollider*>(m_collider)->SetOffset(MathLibrary::Vector2(50,0));
 	dynamic_cast<CircleCollider*>(m_collider)->EnableDraw(true);
 }
 
@@ -46,7 +47,8 @@ void PlayerActor::Update(double deltaTime)
 
 
 	DrawRectangle(Transform->GetLocalPosition().x, Transform->GetLocalPosition().y, 100, 10, m_color);
-	m_collider->Draw();
+
+	//m_collider->Draw();
 	// Collision
 }
 

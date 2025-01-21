@@ -26,4 +26,5 @@ bool Collider::CheckCollisionCircle(CircleCollider* collider)
 
 void Collider::Draw()
 {
+
 }

@@ -14,6 +14,7 @@ public:
 	void End();
 
 	void OnCollision(Actor* other);
+
 private:
 	Color m_color = Color(RED);
 protected:

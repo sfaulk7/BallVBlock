@@ -14,7 +14,6 @@ public:
 	bool goingDown;
 
 	bool collidedOnce = false;
-
 	float Speed = 50;
 	void Start();
 	void Update(double deltaTime);

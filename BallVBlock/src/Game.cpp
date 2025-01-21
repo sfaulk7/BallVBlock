@@ -81,7 +81,7 @@ Scene* Game::GetScene(int index)
 
 void Game::Start()
 {
-	InitWindow(800, 800, "Game");
+	InitWindow(800, 1000, "Game");
 
 	SetTargetFPS(60);
 
