@@ -11,6 +11,7 @@ Missing a ball will cause it to dissapear! (Likely harming an innocent civillian
 Download Instructions:
 <br/>
 Link to release download: 
+https://github.com/sfaulk7/BallVBlock/releases/tag/v1.0
 
 Controls:
 <br/>
