@@ -14,11 +14,12 @@ public:
 	~Game();
 
 	Scene* CurrentScene(); 
-	Scene* GetCurrentScene();
-	void SetCurrentScene(Scene* value);
+	static Scene* GetCurrentScene();
+	static void SetCurrentScene(Scene* value);
 
 	void AddScene(Scene* scene);
 	bool RemoveScene(Scene* scene);
+	static Game* Instance;
 
 	Scene* GetScene(int index);
 

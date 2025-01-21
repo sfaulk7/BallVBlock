@@ -2,6 +2,7 @@
 #include "Engine/Transform2D.h"
 #include "Engine/Component.h"
 
+class Collider;
 class Scene;
 class Component;
 
@@ -25,7 +26,7 @@ public:
 	template <typename T>
 	void AddComponent(const T& value)
 	{
-		T* component = new T(); //
+		T component = T(); //
 		component.Owner = this; 
 		return AddComponent(component);
 	}
@@ -85,6 +86,7 @@ public:
 	virtual void Update(double deltatime);
 	virtual void End();
 	virtual void OnCollision(Actor* other);
+	Collider* m_collider;
 
 	//bool Started(bool started) { m_started = started; }
 	//bool Enabled(bool enabled) { m_enabled = enabled; }

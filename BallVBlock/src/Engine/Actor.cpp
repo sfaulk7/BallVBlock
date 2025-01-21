@@ -62,7 +62,6 @@ Actor::Actor(const char* name = "Actor")
 		const char* Name)
 	{
 		if (parent != nullptr)
-			//Transform2D* parent.AddChild(actor->Transform);
 			actor->GetTransform()->GetParent()->AddChild(actor->Transform);
 
 		// Set the actor transfrom values
@@ -74,7 +73,7 @@ Actor::Actor(const char* name = "Actor")
 
 
 		// Add actor to the current scene
-		Game().CurrentScene()->AddActor(actor);
+		Game::GetCurrentScene()->AddActor(actor);
 
 		return actor;
 	}
