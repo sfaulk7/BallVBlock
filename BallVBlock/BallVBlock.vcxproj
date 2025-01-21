@@ -145,7 +145,8 @@
     <ClCompile Include="src\Components\BlockSpawnComponent.cpp" />
     <ClCompile Include="src\Engine\Actor.cpp" />
     <ClCompile Include="src\Actors\BlockActor.cpp" />
-    <ClCompile Include="src\Engine\Collider.cpp" />
+    <ClCompile Include="src\Engine\Collision\CircleCollider.cpp" />
+    <ClCompile Include="src\Engine\Collision\Collider.cpp" />
     <ClCompile Include="src\Engine\Component.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -160,7 +161,8 @@
     <ClInclude Include="src\Components\BlockSpawnComponent.h" />
     <ClInclude Include="src\Engine\Actor.h" />
     <ClInclude Include="src\Actors\BlockActor.h" />
-    <ClInclude Include="src\Engine\Collider.h" />
+    <ClInclude Include="src\Engine\Collision\CircleCollider.h" />
+    <ClInclude Include="src\Engine\Collision\Collider.h" />
     <ClInclude Include="src\Engine\Component.h" />
     <ClInclude Include="src\Engine\DynamicArray.h" />
     <ClInclude Include="src\Game.h" />

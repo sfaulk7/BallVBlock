@@ -2,6 +2,7 @@
 #include "Engine/Transform2D.h"
 #include "Engine/Component.h"
 
+class Collider;
 class Scene;
 class Component;
 
@@ -22,13 +23,46 @@ protected:
 	
 
 public:
+	template <typename T>
+	void AddComponent(const T& value)
+	{
+		T component = T(); //
+		component.Owner = this; 
+		return AddComponent(component);
+	}
+	template <typename T>
+	bool RemoveComponent(const T& value)
+	{
+		T component = GetComponent<T>();
+		if (component != nullptr)
+			return RemoveComponent(component);
+		return false;
+	}
+	template <typename T>
+	void GetComponent()
+	{
+		/*T[] temp = new T[m_components.Length];*/
+		T* temp = new T[m_components.Length];
 
-	template <typename T>
-	T* AddComponent(T* component);
-	template <typename T>
-	T* RemoveComponent(T* component);
-	template <typename T>
-	T* GetComponent(T* component);
+		int count = 0;
+		for (int i = 0; i < m_components.Length(); i++)
+		{
+			if (m_components[i] == temp) // THIS WAS BUGGING "temp" WAS "T" CHANGING TO "temp" FIXED IT BUT I'M NOT CERTIAN ABOUT THAT CHANGE
+			{
+				temp[count] = (T)m_components[i];
+				count++;
+			}
+		}
+
+		//T[] result = new T[count];
+		T* result = new T[count];
+		for (int i = 0; i < count; i++)
+		{
+			result[i] = temp[i];
+		}
+
+		return result;
+	}
 	
 	
 	Actor();
@@ -52,6 +86,7 @@ public:
 	virtual void Update(double deltatime);
 	virtual void End();
 	virtual void OnCollision(Actor* other);
+	Collider* m_collider;
 
 	//bool Started(bool started) { m_started = started; }
 	//bool Enabled(bool enabled) { m_enabled = enabled; }
@@ -71,47 +106,3 @@ public:
 	
 	Transform2D* Transform;
 };
-
-template <typename T>
-inline T* Actor::AddComponent(T* component)
-{
-	
-	m_components.Add(component);
-	return component;
-	//return AddComponent(component);
-}
-
-template <typename T>
-inline T* Actor::RemoveComponent(T* component)
-{
-	T component = GetComponent<T>();
-	if (component != nullptr)
-		return RemoveComponent(component);
-	return false;
-}
-
-template <typename T>
-inline T* Actor::GetComponent(T* component)
-{
-	/*T[] temp = new T[m_components.Length];*/
-	T* temp = new T[m_components.Length];
-
-	int count = 0;
-	for (int i = 0; i < m_components.Length(); i++)
-	{
-		if (m_components[i] == temp) // THIS WAS BUGGING "temp" WAS "T" CHANGING TO "temp" FIXED IT BUT I'M NOT CERTIAN ABOUT THAT CHANGE
-		{
-			temp[count] = (T)m_components[i];
-			count++;
-		}
-	}
-
-	//T[] result = new T[count];
-	T* result = new T[count];
-	for (int i = 0; i < count; i++)
-	{
-		result[i] = temp[i];
-	}
-
-	return result;
-}

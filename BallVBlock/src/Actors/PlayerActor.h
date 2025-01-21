@@ -11,6 +11,7 @@ public:
 	float Speed = 50;
 	void Start();
 	void Update(double deltaTime);
+	void End();
 private:
 	Color m_color = Color(RED);
 protected:

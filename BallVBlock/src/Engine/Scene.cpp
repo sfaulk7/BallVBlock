@@ -43,12 +43,11 @@
 	{
 		for (int i = 0; i < m_actors.Length(); i++)
 		{
-			Actor* actor = m_actors[i];
 
-			if (m_actors[i]->GetStarted() == false)
+			if (!m_actors[i]->GetStarted())
 				m_actors[i]->Start();
 
-			actor->Update(deltaTime);
+			m_actors[i]->Update(deltaTime);
 			/*if (actor.Collider != null)
 				actor.Collider.Draw();*/
 		}
