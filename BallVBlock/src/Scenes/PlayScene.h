@@ -15,7 +15,10 @@ public:
     float waveTimer;
     int waveCount;
     Actor* m_thePlayerActor;
+    Actor* m_theBallActor;
     Actor* m_blockSpawnActor;
+
+    void CloneTheBall();
 
     void Start();
 
