@@ -1,5 +1,6 @@
 #pragma once
 #include "Collider.h"
+#include "Vector2.h"
 
 class Actor;
 
@@ -12,6 +13,8 @@ public:
 	bool CheckCollisionCircle(CircleCollider* collider);
 	void Draw();
 	void EnableDraw(bool draw);
+	void SetOffset(MathLibrary::Vector2 offset);
 private:
 	bool m_enableDraw;
+	MathLibrary::Vector2 m_offset;
 };

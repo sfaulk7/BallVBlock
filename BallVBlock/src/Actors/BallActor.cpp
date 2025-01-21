@@ -5,6 +5,7 @@
 #include "Engine/Actor.h"
 #include "Scenes/PlayScene.h"
 #include "Engine/Collision/CircleCollider.h"
+#include "Game.h"
 
 
 BallActor::BallActor()
@@ -26,13 +27,15 @@ void BallActor::Start()
 	goingUp = false;
 	goingDown = true;
 
-	m_collider = new CircleCollider(this, 10);
+	m_collider = new CircleCollider(this, 20);
 	dynamic_cast<CircleCollider*>(m_collider)->EnableDraw(true);
 }
 
 void BallActor::Update(double deltaTime)
 {
 	Actor::Update(deltaTime);
+	
+	
 
 	// Movement
 	//Translate down 5
@@ -78,14 +81,13 @@ void BallActor::Update(double deltaTime)
 		goingDown = true;
 		collidedOnce = false;
 	}
-	//Change From Down to Up
-	if (Transform->GetLocalPosition().y == GetScreenHeight() * .9)
+	//Delete if goes past player
+	if (Transform->GetLocalPosition().y > GetScreenHeight())
 	{
-		goingDown = false;
-		goingUp = true;
+		Game::GetCurrentScene()->RemoveActor(this);
 	}
 
-	DrawCircle((Transform->GetLocalPosition().x), (Transform->GetLocalPosition().y), 10, m_color);
+	DrawCircle((Transform->GetLocalPosition().x), (Transform->GetLocalPosition().y), 15, m_color);
 
 	m_collider->Draw();
 }
@@ -93,9 +95,12 @@ void BallActor::Update(double deltaTime)
 void BallActor::OnCollision(Actor* other)
 {
 	
-	if (!(dynamic_cast<BallActor*>(other) != nullptr) && collidedOnce == false)
+	if (!(dynamic_cast<BallActor*>(other) != nullptr) && collidedOnce == false && Transform->GetLocalPosition().y == other->Transform->GetLocalPosition().y)
 	{
 		Actor::Instantiate(new BallActor(), nullptr, MathLibrary::Vector2(10, 10), 0, "The BallActor");
 		collidedOnce = true;
+
+		goingDown = false;
+		goingUp = true;
 	}
 }

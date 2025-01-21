@@ -8,14 +8,13 @@
 #include "Actors/PlayerActor.h"
 #include "Actors/BallActor.h"
 #include "Actors/BlockSpawnActor.h"
-
+#include <string>
 
 void PlayScene::Start()
 {
     Scene::Start();
 
     SetTargetFPS(60);
-
 
     m_theBallActor = Actor::Instantiate(new BallActor(), nullptr, MathLibrary::Vector2(10, 10), 0, "The BallActor");
     m_thePlayerActor = Actor::Instantiate(new PlayerActor(), nullptr, MathLibrary::Vector2(450, 400), 0, "The PlayerActor");
@@ -27,7 +26,6 @@ void PlayScene::Start()
 void PlayScene::Update(double deltaTime)
 {
     Scene::Update(deltaTime);
-
 
 }
 
