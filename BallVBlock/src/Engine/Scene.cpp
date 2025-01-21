@@ -53,6 +53,24 @@
 		}
 
 		// Check for collision here
+		for (int row = 0; row < m_actors.Length(); row++)
+		{
+			for (int column = row; column < m_actors.Length(); column++)
+			{
+				if (row == column)
+					continue;
+				if (m_actors[row]->m_collider != nullptr && m_actors[column]->m_collider != nullptr)
+				{
+					if (m_actors[row]->m_collider->CheckCollision(m_actors[column]))
+					{
+						m_actors[row]->OnCollision(m_actors[column]);
+						m_actors[column]->OnCollision(m_actors[row]);
+
+					}
+				}
+
+			}
+		}
 	}
 
 	void Scene::End()

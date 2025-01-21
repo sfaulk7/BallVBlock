@@ -5,6 +5,7 @@
 #include "DynamicArray.h"
 #include "Component.h"
 #include "Scenes/PlayScene.h"
+#include "Engine/Collision/CircleCollider.h"
 
 
 	/*MathLibrary::Matrix3 GetLocalRotation()

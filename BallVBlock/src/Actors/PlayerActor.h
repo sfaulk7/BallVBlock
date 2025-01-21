@@ -12,6 +12,8 @@ public:
 	void Start();
 	void Update(double deltaTime);
 	void End();
+
+	void OnCollision(Actor* other);
 private:
 	Color m_color = Color(RED);
 protected:
