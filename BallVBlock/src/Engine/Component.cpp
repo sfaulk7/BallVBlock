@@ -20,6 +20,7 @@ Component::Component(Actor* owner)
 	m_enabled = true;
 	m_started = false;
 }
+
 Component::~Component()
 {
 
@@ -32,7 +33,6 @@ Actor* Component::GetOwner()
 void Component::SetOwner(Actor* Owner)
 {
 	m_owner = Owner;
-	Owner = m_owner;
 }
 	
 bool Component::GetEnabled()

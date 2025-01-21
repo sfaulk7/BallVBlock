@@ -17,41 +17,28 @@ BlockActor::~BlockActor()
 
 void BlockActor::Update(float deltaTime)
 {
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-	{
-		Vector2 mousePos = GetMousePosition();
+	Actor::Update(deltaTime);
 
-		// Task 3:
-		// TODO: Calculate row and col index based on the mouse positon
-		int rowIndex = mousePos.x / m_tileWidth + 1;
-		int colIndex = mousePos.y / m_tileHeight;
+	Vector2 mousePos = GetMousePosition();
 
-		DrawCircle(rowIndex, colIndex, 10, RED);
 
-		// TODO: calculate the index of the tile clicked on based on the row/col index
-		int tileIndex = colIndex * COLS + rowIndex;
+	int rowIndex = mousePos.x / m_tileWidth + 1;
+	int colIndex = mousePos.y / m_tileHeight;
 
-		m_tiles[tileIndex] += 1;
-		if (m_tiles[tileIndex] >= 5)
-			m_tiles[tileIndex] = 0;
-	}
+	DrawCircle(rowIndex, colIndex, 10, RED);
+
+
+	int tileIndex = colIndex * COLS + rowIndex;
+
+	m_tiles[tileIndex] += 1;
+	if (m_tiles[tileIndex] >= 5)
+		m_tiles[tileIndex] = 0;
+
+	Draw();
 }
 
 void BlockActor::Draw()
 {
-	BeginDrawing();
-	ClearBackground(BLACK);
-
-	// Task2:
-	// use a nested loop to iterate over rows and columns
-	// Use raylib's DrawRect method to draw each tile in the array.
-	// 	   use the row and col index multipled by m_tileHeight/m_tileWidth
-	// 	   to calculate the x and y position for each rectangle.
-	// 
-	// change the color of the rect drawn based on the value of the tile.
-	// 	   We have created a helper function you can use "GetTileColor"
-	// --------------------------------------------------------------------
-	// write your code here
 	int colorIncrement = 0;
 	for (int i = 0; i < ROWS; i++)
 	{
@@ -67,11 +54,6 @@ void BlockActor::Draw()
 			DrawRectangle(xPos, yPos, m_tileWidth, m_tileHeight, color);
 		}
 	}
-
-
-	// --------------------------------------------------------------------
-
-	EndDrawing();
 }
 
 Color BlockActor::GetTileColor(int tileValue)

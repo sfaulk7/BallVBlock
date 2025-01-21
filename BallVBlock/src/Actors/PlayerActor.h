@@ -9,7 +9,8 @@ public:
 	~PlayerActor();
 
 	float Speed = 50;
-	virtual void Update(double deltaTime);
+	void Start();
+	void Update(double deltaTime);
 private:
 	Color m_color = Color(RED);
 protected:

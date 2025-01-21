@@ -119,7 +119,7 @@ Actor::Actor(const char* name = "Actor")
 	void Actor::Update(double deltatime)
 	{
 		// Need component for update function
-		for (size_t i = 0; i < m_components.Length(); i++)
+		for (int i = 0; i < m_components.Length(); i++)
 		{
 			if (!m_components[i]->Started)
 				m_components[i]->Start();

@@ -22,46 +22,13 @@ protected:
 	
 
 public:
-	template <typename T>
-	void AddComponent(const T& value)
-	{
-		T* component = new T(); //
-		component.Owner = this; 
-		return AddComponent(component);
-	}
-	template <typename T>
-	bool RemoveComponent(const T& value)
-	{
-		T component = GetComponent<T>();
-		if (component != nullptr)
-			return RemoveComponent(component);
-		return false;
-	}
-	template <typename T>
-	void GetComponent()
-	{
-		/*T[] temp = new T[m_components.Length];*/
-		T* temp = new T[m_components.Length];
 
-		int count = 0;
-		for (int i = 0; i < m_components.Length(); i++)
-		{
-			if (m_components[i] == temp) // THIS WAS BUGGING "temp" WAS "T" CHANGING TO "temp" FIXED IT BUT I'M NOT CERTIAN ABOUT THAT CHANGE
-			{
-				temp[count] = (T)m_components[i];
-				count++;
-			}
-		}
-
-		//T[] result = new T[count];
-		T* result = new T[count];
-		for (int i = 0; i < count; i++)
-		{
-			result[i] = temp[i];
-		}
-
-		return result;
-	}
+	template <typename T>
+	T* AddComponent(T* component);
+	template <typename T>
+	T* RemoveComponent(T* component);
+	template <typename T>
+	T* GetComponent(T* component);
 	
 	
 	Actor();
@@ -104,3 +71,47 @@ public:
 	
 	Transform2D* Transform;
 };
+
+template <typename T>
+inline T* Actor::AddComponent(T* component)
+{
+	
+	m_components.Add(component);
+	return component;
+	//return AddComponent(component);
+}
+
+template <typename T>
+inline T* Actor::RemoveComponent(T* component)
+{
+	T component = GetComponent<T>();
+	if (component != nullptr)
+		return RemoveComponent(component);
+	return false;
+}
+
+template <typename T>
+inline T* Actor::GetComponent(T* component)
+{
+	/*T[] temp = new T[m_components.Length];*/
+	T* temp = new T[m_components.Length];
+
+	int count = 0;
+	for (int i = 0; i < m_components.Length(); i++)
+	{
+		if (m_components[i] == temp) // THIS WAS BUGGING "temp" WAS "T" CHANGING TO "temp" FIXED IT BUT I'M NOT CERTIAN ABOUT THAT CHANGE
+		{
+			temp[count] = (T)m_components[i];
+			count++;
+		}
+	}
+
+	//T[] result = new T[count];
+	T* result = new T[count];
+	for (int i = 0; i < count; i++)
+	{
+		result[i] = temp[i];
+	}
+
+	return result;
+}
