@@ -13,7 +13,9 @@ Download Instructions:
 Link to release download: 
 https://github.com/sfaulk7/BallVBlock/releases/tag/v1.0
 <br/>
-Just Downlad the zip and run the application!
+Just Downlad the zip and run the application
+<br/>
+Be warned! The ball doesn't wait for you to be ready and will attack as soon as you open the application!
 
 Controls:
 <br/>
