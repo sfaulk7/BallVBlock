@@ -12,6 +12,8 @@ Download Instructions:
 <br/>
 Link to release download: 
 https://github.com/sfaulk7/BallVBlock/releases/tag/v1.0
+<br/>
+Just Downlad the zip and run the application!
 
 Controls:
 <br/>
