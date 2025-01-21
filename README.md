@@ -1,10 +1,12 @@
 # BallVBlock
 
-There is a wall made of blocks in front of you and you don't like it!
+The ball mitosis machine is attacking you!
 <br/>
-Control your paddle side to side to bounce the block breaking ball to break it down block by block!
+Control your paddle side to side to bounce the ball away!
 <br/>
-Be careful though if the block breaking ball gets past your paddle it will hit you! (and it hurts you don't want that)
+Be careful with each reflect of the ball another appears!
+<br/>
+Missing a ball will cause it to dissapear! (Likely harming an innocent civillian and you don't want that)
 
 Download Instructions:
 <br/>
@@ -12,3 +14,4 @@ Link to release download:
 
 Controls:
 <br/>
+Only A and D are required!
