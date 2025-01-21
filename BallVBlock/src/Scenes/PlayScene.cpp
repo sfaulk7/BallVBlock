@@ -6,15 +6,18 @@
 #include "Engine/Component.h"
 #include "Scenes/PlayScene.h"
 #include "Actors/PlayerActor.h"
+#include "Actors/BlockSpawnActor.h"
 
 
 void PlayScene::Start()
 {
+    Scene::Start();
 
     SetTargetFPS(60);
 
 
     m_thePlayerActor = Actor::Instantiate(new PlayerActor(), nullptr, MathLibrary::Vector2(450, 400), 0, "The PlayerActor");
+    m_blockSpawnActor = Actor::Instantiate(new BlockSpawnActor(), nullptr, MathLibrary::Vector2(50, 100), 0, "BlockSpawnActor");
     //PlayScene::AddActor(m_thePlayerActor);
 }
 

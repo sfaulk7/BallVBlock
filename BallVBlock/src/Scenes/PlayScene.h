@@ -15,6 +15,7 @@ public:
     float waveTimer;
     int waveCount;
     Actor* m_thePlayerActor;
+    Actor* m_blockSpawnActor;
 
     void Start();
 

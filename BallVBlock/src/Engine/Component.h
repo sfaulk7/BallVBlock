@@ -9,8 +9,6 @@ public:
 	Component(Actor* owner = nullptr);
 	~Component();
 
-	Actor* Owner;
-
 	bool Enabled;
 	bool Started;
 
@@ -30,8 +28,11 @@ public:
 	virtual void Update(double deltatime);
 	virtual void End();
 
-private:
+protected:
 	Actor* m_owner;
+
+
+private:
 	bool m_enabled;
 	bool m_started;
 

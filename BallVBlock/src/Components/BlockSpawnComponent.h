@@ -12,22 +12,16 @@ public:
     BlockSpawnComponent(Actor* owner);
     ~BlockSpawnComponent();
 
-    bool waveStarted = false;
-    bool waveFinished = false;
-
     Color GetColor();
     Color SetColor();
 
+    Actor* block;
 
     void SetRandomColor(Color color);
 
     void Update(double deltaTime);
 
-    void End()
-    {
-        End();
-        Enabled = false;
-    }
+    void End();
 
 private:
 

@@ -5,10 +5,22 @@
 
 PlayerActor::PlayerActor()
 {
+	MathLibrary::Vector2 PlayerSpawn = MathLibrary::Vector2((GetScreenWidth() * .45), (GetScreenHeight() * .9));
+
+	Transform->SetLocalPosition(PlayerSpawn);
 }
 
 PlayerActor::~PlayerActor()
 {
+
+}
+
+void PlayerActor::Start()
+{
+	if (Transform->GetLocalPosition().y != (GetScreenHeight() * .9))
+	{
+		Transform->SetLocalPosition(MathLibrary::Vector2 ((GetScreenWidth() * .45), (GetScreenHeight() * .9)));
+	}
 }
 
 void PlayerActor::Update(double deltaTime)
@@ -17,15 +29,15 @@ void PlayerActor::Update(double deltaTime)
 
 	// Movement
 	Vector2* movementInput = new Vector2();
-	if (IsKeyDown(KEY_A))
+	if (IsKeyDown(KEY_A) && Transform->GetLocalPosition().x > 5)
 		Transform->Translate(-5, 0);
-	if (IsKeyDown(KEY_S))
+	if (IsKeyDown(KEY_D) && Transform->GetLocalPosition().x < GetScreenWidth() * .86)
 		Transform->Translate(5, 0);
 
-	MathLibrary::Vector2 deltaMovement = MathLibrary::Vector2().getNormalized() * Speed * (float)deltaTime;
+	//MathLibrary::Vector2 deltaMovement = MathLibrary::Vector2().getNormalized() * Speed * (float)deltaTime;
 
-	if (deltaMovement.getMagnitude() != 0)
-		Transform->SetLocalPosition(deltaMovement);
+	//if (deltaMovement.getMagnitude() != 0)
+		//Transform->SetLocalPosition(deltaMovement);
 
-	DrawRectangle((GetScreenWidth() * .45), (GetScreenHeight() * .9), 100, 10, m_color);
+	DrawRectangle((Transform->GetLocalPosition().x), (Transform->GetLocalPosition().y), 100, 10, m_color);
 }

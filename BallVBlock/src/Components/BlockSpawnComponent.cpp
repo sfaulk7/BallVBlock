@@ -10,12 +10,12 @@
 
 BlockSpawnComponent::BlockSpawnComponent()
 {
-
+	Enabled = true;
 }
 
-BlockSpawnComponent::BlockSpawnComponent(Actor* owner)
+BlockSpawnComponent::BlockSpawnComponent(Actor* owner) : Component::Component(m_owner)
 {
-
+	Enabled = true;
 }
 
 BlockSpawnComponent::~BlockSpawnComponent()
@@ -51,13 +51,25 @@ void BlockSpawnComponent::SetRandomColor(Color color)
 
 void BlockSpawnComponent::Update(double deltaTime)
 {
+	if (Enabled == true)
+	{
+		for (int i = -1; i <= 1; i++)
+		{
 
-    for (int i = -1; i <= 1; i++)
-    {
+			MathLibrary::Vector2 offset = MathLibrary::Vector2(100 + (i * 15), 100 + (i * 15));
 
-        MathLibrary::Vector2 offset = MathLibrary::Vector2(100 + (i * 15), 100 + (i * 15));
+			block = Actor::Instantiate(new BlockActor(), nullptr, offset, 0, "Block");
 
-        Actor* block = Actor::Instantiate(new BlockActor(), GetOwner()->Transform, offset, 0, "Block");
+		}
 
-    }
+		Enabled = false;
+	}
+
+	
+
+}
+
+void BlockSpawnComponent::End()
+{
+
 }

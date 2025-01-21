@@ -14,8 +14,8 @@ BlockSpawnActor::~BlockSpawnActor()
 
 void BlockSpawnActor::Start()
 {
-
-	Actor::AddComponent<BlockSpawnComponent>(BlockSpawnComponent(this));
+	Actor::Start();
+	AddComponent<BlockSpawnComponent>(new BlockSpawnComponent(this));
 
 }
 
