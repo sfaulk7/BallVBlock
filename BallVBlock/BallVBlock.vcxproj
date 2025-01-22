@@ -153,6 +153,7 @@
     <ClCompile Include="src\Engine\Scene.cpp" />
     <ClCompile Include="src\Engine\Transform2D.cpp" />
     <ClCompile Include="src\Scenes\PlayScene.cpp" />
+    <ClCompile Include="src\Scenes\StartScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Actors\BallActor.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="src\Engine\Scene.h" />
     <ClInclude Include="src\Scenes\PlayScene.h" />
     <ClInclude Include="src\Engine\Transform2D.h" />
+    <ClInclude Include="src\Scenes\StartScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

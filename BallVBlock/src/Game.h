@@ -35,6 +35,7 @@ private:
 
 	//Scenes
 	Scene* m_playScene;
+	Scene* m_startScene;
 
 	void Draw();
 

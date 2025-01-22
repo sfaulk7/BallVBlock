@@ -19,9 +19,6 @@ private:
 	DynamicArray<Component*> m_componentsToBeRemoved;
 
 protected:
-	/*void Started(bool started) { m_started = started; }
-	void Enabled(bool enabled) { m_enabled = enabled; }*/
-	
 
 public:
 	template <typename T>
@@ -30,7 +27,6 @@ public:
 	T* RemoveComponent(T* component);
 	template <typename T>
 	T* GetComponent(T* component);
-	
 	
 	Actor();
 	Actor(const char* name);
@@ -54,9 +50,6 @@ public:
 	virtual void End();
 	virtual void OnCollision(Actor* other);
 	Collider* m_collider;
-
-	//bool Started(bool started) { m_started = started; }
-	//bool Enabled(bool enabled) { m_enabled = enabled; }
 	
 	bool GetStarted()
 	{
@@ -67,9 +60,6 @@ public:
 		return m_enabled;
 	}
 	void SetEnabled(bool value);
-
-	//void AddComponentToRemove(Component comp);
-	//void RemoveComponentsToBeRemoved();
 	
 	Transform2D* Transform;
 };

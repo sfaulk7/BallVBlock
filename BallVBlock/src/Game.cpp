@@ -5,6 +5,7 @@
 #include "Engine/DynamicArray.h"
 #include "Engine/Component.h"
 #include "Scenes/PlayScene.h"
+#include "Scenes/StartScene.h"
 
 Scene* Game::m_currentScene = nullptr;
 DynamicArray<Scene*> Game::m_scenes;
@@ -15,7 +16,8 @@ Game::Game()
 	{
 		m_currentScene = this->m_currentScene;
 	}
-	m_playScene = new PlayScene();
+	//m_playScene = new PlayScene();
+	m_startScene = new StartScene();
 }
 
 Game::~Game()
@@ -95,9 +97,12 @@ void Game::Run()
 	long lastTime = 0;
 	double deltaTime = 1;
 
+	
+	AddScene(m_startScene);
 	AddScene(m_playScene);
 
-	SetCurrentScene(m_playScene);
+	//SetCurrentScene(m_playScene);
+	SetCurrentScene(m_startScene);
 
 	while (!WindowShouldClose())
 	{

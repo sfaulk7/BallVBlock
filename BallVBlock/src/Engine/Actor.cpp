@@ -7,19 +7,6 @@
 #include "Scenes/PlayScene.h"
 #include "Engine/Collision/CircleCollider.h"
 
-
-	/*MathLibrary::Matrix3 GetLocalRotation()
-	{
-		return m_localRotation;
-	}
-	void SetLocalRotation()
-	{
-		m_localRotationAngle = -(float)atan2(m_localRotation.m01, m_localRotation.m00);
-		UpdateTransforms();
-	}*/
-
-	
-
 Actor::Actor()
 {
 	const char* Name;
@@ -34,10 +21,6 @@ Actor::Actor(const char* name = "Actor")
 		//Transform2D* Transform;
 		Name = name;
 		Transform = new Transform2D();
-
-		//COMPONENTS
-		//m_componets = new Component[0];
-		//m_componetsToRemove = new Component[0];
 
 	}
 
@@ -105,9 +88,6 @@ Actor::Actor(const char* name = "Actor")
 		
 	}
 
-
-	// Get and set the collider
-
 	void Actor::Start()
 	{
 		m_started = true;
@@ -118,7 +98,6 @@ Actor::Actor(const char* name = "Actor")
 
 	void Actor::Update(double deltatime)
 	{
-		// Need component for update function
 		for (int i = 0; i < m_components.Length(); i++)
 		{
 			if (!m_components[i]->Started)
@@ -131,7 +110,6 @@ Actor::Actor(const char* name = "Actor")
 
 	void Actor::End()
 	{
-		// Need component for end function
 		for (size_t i = 0; i < m_components.Length(); i++)
 		{
 			m_components[i]->End();
