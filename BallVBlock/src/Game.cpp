@@ -16,7 +16,7 @@ Game::Game()
 	{
 		m_currentScene = this->m_currentScene;
 	}
-	//m_playScene = new PlayScene();
+	m_playScene = new PlayScene();
 	m_startScene = new StartScene();
 }
 
