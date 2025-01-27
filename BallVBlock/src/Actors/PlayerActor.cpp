@@ -49,7 +49,7 @@ void PlayerActor::Update(double deltaTime)
 	// Drawing the Rectangle
 	DrawRectangle(Transform->GetLocalPosition().x, Transform->GetLocalPosition().y, 100, 10, m_color);
 
-	//m_collider->Draw();
+	m_collider->Draw();
 	// Collision
 }
 
