@@ -17,7 +17,7 @@ Game::Game()
 		m_currentScene = this->m_currentScene;
 	}
 	m_playScene = new PlayScene();
-	//m_startScene = new StartScene();
+	m_startScene = new StartScene();
 }
 
 Game::~Game()
@@ -101,8 +101,8 @@ void Game::Run()
 	AddScene(m_startScene);
 	AddScene(m_playScene);
 
-	SetCurrentScene(m_playScene);
-	//SetCurrentScene(m_startScene);
+	//SetCurrentScene(m_playScene);
+	SetCurrentScene(m_startScene);
 
 	while (!WindowShouldClose())
 	{
