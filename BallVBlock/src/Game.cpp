@@ -102,7 +102,8 @@ void Game::Run()
 	AddScene(m_playScene);
 
 	//SetCurrentScene(m_playScene);
-	SetCurrentScene(m_startScene);
+	//SetCurrentScene(m_startScene);
+	SetCurrentScene(m_playScene);
 
 	while (!WindowShouldClose())
 	{
