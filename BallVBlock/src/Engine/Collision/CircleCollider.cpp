@@ -20,7 +20,6 @@ bool CircleCollider::CheckCollisionCircle(CircleCollider* collider)
 	MathLibrary::Vector2 left = { collider->Owner->Transform->GetGlobalPosition() };
 	MathLibrary::Vector2 right = { Owner->Transform->GetGlobalPosition() + m_offset };
 
-
 	float distance = (left - right).getMagnitude();
 
 	return sumRadii >= distance;
@@ -31,6 +30,8 @@ void CircleCollider::Draw()
 
 	if (m_enableDraw)
 		DrawCircleLines(Owner->Transform->GetGlobalPosition().x + m_offset.x, Owner->Transform->GetGlobalPosition().y + m_offset.y, CollisionRadius, GREEN);
+
+	//DrawText(TextFormat("Score: %i", m_score), 320, 40, 40, YELLOW);
 }
 
 void CircleCollider::EnableDraw(bool draw)

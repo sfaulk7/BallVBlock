@@ -25,7 +25,7 @@ void PlayerActor::Start()
 	}
 
 	// Adding the collider to the player
-	m_collider = new CircleCollider(this, 50);
+	m_collider = new CircleCollider(this, 55);
 	dynamic_cast<CircleCollider*>(m_collider)->SetOffset(MathLibrary::Vector2(50,0));
 	dynamic_cast<CircleCollider*>(m_collider)->EnableDraw(true);
 }
@@ -35,22 +35,25 @@ void PlayerActor::Update(double deltaTime)
 	Actor::Update(deltaTime);
 
 	// Player Movement
-	Vector2* movementInput = new Vector2();
+	MathLibrary::Vector2 movementInput = MathLibrary::Vector2();
 	if (IsKeyDown(KEY_A) && Transform->GetLocalPosition().x > 5)
-		Transform->Translate(-5, 0);
+		movementInput.x -= 1;
 	if (IsKeyDown(KEY_D) && Transform->GetLocalPosition().x < GetScreenWidth() * .86)
-		Transform->Translate(5, 0);
+		movementInput.x += 1;
 
-	MathLibrary::Vector2 deltaMovement = MathLibrary::Vector2().getNormalized() * Speed * (float)deltaTime;
+	MathLibrary::Vector2 deltaMovement = movementInput.getNormalized() * Speed * (float)deltaTime;
 
 	if (deltaMovement.getMagnitude() != 0)
-		Transform->SetLocalPosition(deltaMovement);
+		Transform->SetLocalPosition(Transform->GetLocalPosition() + deltaMovement);
 
 	// Drawing the Rectangle
 	DrawRectangle(Transform->GetLocalPosition().x, Transform->GetLocalPosition().y, 100, 10, m_color);
 
-	//m_collider->Draw();
+	m_collider->Draw();
 	// Collision
+
+	DrawText(TextFormat("Score: %i", m_score), 320, 40, 40, YELLOW);
+	
 }
 
 void PlayerActor::End()
@@ -60,5 +63,8 @@ void PlayerActor::End()
 
 void PlayerActor::OnCollision(Actor* other)
 {
-
+	if (other->Transform->GetLocalPosition().y == this->Transform->GetLocalPosition().y)
+	{
+		m_score += 1;
+	}
 }

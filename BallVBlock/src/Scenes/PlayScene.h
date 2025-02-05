@@ -23,5 +23,6 @@ public:
     void Update(double deltaTime);
 
     void End();
-  
+private:
+    int m_ballsMissed = 0;
 };

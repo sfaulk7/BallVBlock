@@ -10,7 +10,6 @@ public:
 	~Scene();
 
 
-	
 	bool gameOver = false;
 	bool hit = false;
 	void AddActor(Actor* actor);

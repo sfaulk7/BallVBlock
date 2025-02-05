@@ -14,7 +14,9 @@ public:
 	void Draw();
 	void EnableDraw(bool draw);
 	void SetOffset(MathLibrary::Vector2 offset);
+	
 private:
 	bool m_enableDraw;
 	MathLibrary::Vector2 m_offset;
+	//int m_score = 0;
 };

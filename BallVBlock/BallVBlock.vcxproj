@@ -145,6 +145,7 @@
     <ClCompile Include="src\Components\BlockSpawnComponent.cpp" />
     <ClCompile Include="src\Engine\Actor.cpp" />
     <ClCompile Include="src\Actors\BlockActor.cpp" />
+    <ClCompile Include="src\Engine\Collision\AABBCollision.cpp" />
     <ClCompile Include="src\Engine\Collision\CircleCollider.cpp" />
     <ClCompile Include="src\Engine\Collision\Collider.cpp" />
     <ClCompile Include="src\Engine\Component.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="src\Components\BlockSpawnComponent.h" />
     <ClInclude Include="src\Engine\Actor.h" />
     <ClInclude Include="src\Actors\BlockActor.h" />
+    <ClInclude Include="src\Engine\Collision\AABBCollision.h" />
     <ClInclude Include="src\Engine\Collision\CircleCollider.h" />
     <ClInclude Include="src\Engine\Collision\Collider.h" />
     <ClInclude Include="src\Engine\Component.h" />

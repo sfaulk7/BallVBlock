@@ -8,7 +8,7 @@ public:
 	PlayerActor();
 	~PlayerActor();
 
-	float Speed = 50;
+	float Speed = 10;
 	void Start();
 	void Update(double deltaTime);
 	void End();
@@ -17,5 +17,7 @@ public:
 
 private:
 	Color m_color = Color(RED);
+	int m_score = 0;
+	bool m_playerHit = false;
 protected:
 };

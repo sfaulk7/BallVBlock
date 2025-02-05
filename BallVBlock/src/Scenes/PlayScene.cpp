@@ -20,7 +20,6 @@ void PlayScene::Start()
     m_theBallActor = Actor::Instantiate(new BallActor(), nullptr, MathLibrary::Vector2(10, 10), 0, "The BallActor");
     m_thePlayerActor = Actor::Instantiate(new PlayerActor(), nullptr, MathLibrary::Vector2(450, 400), 0, "The PlayerActor");
     m_blockSpawnActor = Actor::Instantiate(new BlockSpawnActor(), nullptr, MathLibrary::Vector2(50, 100), 0, "BlockSpawnActor");
-    //PlayScene::AddActor(m_thePlayerActor);
 }
 
 
@@ -28,6 +27,12 @@ void PlayScene::Update(double deltaTime)
 {
     Scene::Update(deltaTime);
 
+    if (m_theBallActor->Transform->GetLocalPosition().y > GetScreenHeight())
+    {
+        m_ballsMissed += 1;
+    }
+
+    DrawText(TextFormat("Balls Missed / 10: %i", m_ballsMissed), 320, 80, 40, GREEN);
 }
 
 void PlayScene::End()

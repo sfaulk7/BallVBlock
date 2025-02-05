@@ -15,12 +15,18 @@ private:
 	bool m_started;
 	bool m_enabled;
 
+	int m_top;
+	int m_bottom;
+	int m_left;
+	int m_right;
+
 	DynamicArray<Component*> m_components;
 	DynamicArray<Component*> m_componentsToBeRemoved;
 
 protected:
 
 public:
+	
 	template <typename T>
 	T* AddComponent(T* component);
 	template <typename T>
@@ -59,9 +65,27 @@ public:
 	{
 		return m_enabled;
 	}
-	void SetEnabled(bool value);
+	bool SetEnabled(bool value)
+	{
+		return m_enabled = value;
+	}
 	
 	Transform2D* Transform;
+
+
+
+	bool CheckAABBCollision(Actor* other)
+	{
+		bool AisToTheRightOfB = m_left > other->m_right;
+		bool AisToTheLeftOfB = m_right < other->m_left;
+		bool AisAboveB = m_bottom < other->m_top;
+		bool AisBelowB = m_top > other->m_bottom;
+
+		return !(AisToTheRightOfB
+			|| AisToTheLeftOfB
+			|| AisAboveB
+			|| AisBelowB);
+	}
 };
 
 template<typename T>

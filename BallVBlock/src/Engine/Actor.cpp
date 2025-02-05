@@ -53,6 +53,11 @@ Actor::Actor(const char* name = "Actor")
 		actor->GetTransform()->SetLocalPosition(position);
 		actor->GetTransform()->Rotate(rotation);
 		actor->Name(Name);
+
+		actor->m_left = actor->Transform->GetLocalPosition().x;
+		actor->m_right;
+		actor->m_top = actor->Transform->GetLocalPosition().x;
+		actor->m_bottom = actor->Transform->GetLocalPosition().x + actor->Transform->GetLocalPosition().;
 		
 
 
