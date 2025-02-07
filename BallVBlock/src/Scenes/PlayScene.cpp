@@ -9,6 +9,7 @@
 #include "Actors/BallActor.h"
 #include "Actors/BlockSpawnActor.h"
 #include <string>
+#include "Engine/Transform2D.h"
 
 void PlayScene::Start()
 {

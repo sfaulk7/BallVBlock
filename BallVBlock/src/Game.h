@@ -19,9 +19,9 @@ public:
 
 	void AddScene(Scene* scene);
 	bool RemoveScene(Scene* scene);
-	static Game* Instance;
+	static Game* Instance();
 
-	Scene* GetScene(int index);
+	static Scene* GetScene(int index);
 
 	void Start();
 	void Update(float deltaTime);
@@ -29,7 +29,6 @@ public:
 	void Run();
 
 private:
-
 	static DynamicArray<Scene*> m_scenes;
 	static Scene* m_currentScene;
 

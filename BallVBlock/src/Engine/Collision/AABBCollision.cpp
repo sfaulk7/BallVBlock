@@ -1,6 +1,6 @@
 #include "AABBCollision.h"
 
-void AABBCollision::AABB(A, B)
-{
-
-}
+//void AABBCollision::AABB(A, B)
+//{
+//
+//}

@@ -116,5 +116,6 @@ void BallActor::OnCollision(Actor* other)
 		collidedOnce = true;
 		goingDown = false;
 		goingUp = true;
+
 	}
 }

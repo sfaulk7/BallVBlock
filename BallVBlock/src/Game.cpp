@@ -70,6 +70,11 @@ bool Game::RemoveScene(Scene* scene)
 	return true;
 }
 
+Game* Game::Instance()
+{
+	return nullptr;
+}
+
 Scene* Game::GetScene(int index)
 {
 	//If scene count is <= 0 or if scene count is <= index or index is < 0
@@ -101,9 +106,8 @@ void Game::Run()
 	AddScene(m_startScene);
 	AddScene(m_playScene);
 
+	SetCurrentScene(GetScene(0));
 	//SetCurrentScene(m_playScene);
-	//SetCurrentScene(m_startScene);
-	SetCurrentScene(m_playScene);
 
 	while (!WindowShouldClose())
 	{

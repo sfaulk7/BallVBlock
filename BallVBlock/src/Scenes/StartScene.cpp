@@ -22,14 +22,15 @@ void StartScene::Update(double deltatime)
 	Scene::Update(deltatime);
 	
 	// If enter key is pressed set the current scene to the playScene.
-	//if (IsKeyPressed(KEY_ENTER))
-	//{
-	//	Game::Instance->SetCurrentScene(Game::Instance->GetScene(1));
-	//}
-	//
-	//// Intro to the game
-	//DrawText("Welcome to Ball V Block!", 190, 120, 30, YELLOW);
-	//DrawText("Press Enter To Play!", 200, 150, 30, YELLOW);
+	if (IsKeyPressed(KEY_ENTER))
+	{
+		Game::SetCurrentScene(Game::GetScene(1));
+	}
+	
+	// Intro to the game
+	DrawText("Welcome to Ball V Block!", 190, 120, 30, YELLOW);
+	DrawText("Press Enter To Play!", 200, 150, 30, YELLOW);
+
 }
 
 void StartScene::End()
