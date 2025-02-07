@@ -63,8 +63,12 @@ void PlayerActor::End()
 
 void PlayerActor::OnCollision(Actor* other)
 {
-	if (other->Transform->GetLocalPosition().y == this->Transform->GetLocalPosition().y)
+	if (other->Transform->GetLocalPosition().y >= this->Transform->GetLocalPosition().y - 4 && other->Transform->GetLocalPosition().y <= this->Transform->GetLocalPosition().y + 4)
 	{
-		m_score += 1;
+		if (other->IsDirty() == false)
+		{
+			m_score += 1;
+			other->SetDirty(true);
+		}
 	}
 }

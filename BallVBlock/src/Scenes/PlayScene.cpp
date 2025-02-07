@@ -27,9 +27,11 @@ void PlayScene::Update(double deltaTime)
 {
     Scene::Update(deltaTime);
 
-    if (m_theBallActor->Transform->GetLocalPosition().y > GetScreenHeight())
+    
+
+    if (m_theBallActor->Transform->GetLocalPosition().y >= GetScreenHeight())
     {
-        m_ballsMissed += 1;
+        m_ballsMissed++;
     }
 
     DrawText(TextFormat("Balls Missed / 10: %i", m_ballsMissed), 320, 80, 40, GREEN);

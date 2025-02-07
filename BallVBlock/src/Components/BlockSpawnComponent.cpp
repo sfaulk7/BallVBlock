@@ -53,7 +53,7 @@ void BlockSpawnComponent::Update(double deltaTime)
 {
 	if (Enabled == true)
 	{
-		for (int i = -1; i <= 1; i++)
+		for (int i = 0; i <= 10; i++)
 		{
 
 			MathLibrary::Vector2 offset = MathLibrary::Vector2(100 + (i * 15), 100 + (i * 15));

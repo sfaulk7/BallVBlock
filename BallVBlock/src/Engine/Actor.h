@@ -20,6 +20,8 @@ private:
 	int m_left;
 	int m_right;
 
+	bool m_dirty;
+
 	DynamicArray<Component*> m_components;
 	DynamicArray<Component*> m_componentsToBeRemoved;
 
@@ -70,6 +72,9 @@ public:
 		return m_enabled = value;
 	}
 	
+	bool IsDirty() { return m_dirty; };
+	void SetDirty(bool value) { m_dirty = value; };
+
 	Transform2D* Transform;
 
 

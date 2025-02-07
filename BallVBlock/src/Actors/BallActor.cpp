@@ -75,6 +75,7 @@ void BallActor::Update(double deltaTime)
 			goingLeft = false;
 			goingRight = true;
 			collidedOnce = false;
+			SetDirty(false);
 		}
 		//Change From Right to left
 		if (Transform->GetLocalPosition().x >= GetScreenWidth())
@@ -82,6 +83,7 @@ void BallActor::Update(double deltaTime)
 			goingRight = false;
 			goingLeft = true;
 			collidedOnce = false;
+			SetDirty(false);
 		}
 		//Change From Up to Down
 		if (Transform->GetLocalPosition().y <= 0)
@@ -89,7 +91,7 @@ void BallActor::Update(double deltaTime)
 			goingUp = false;
 			goingDown = true;
 			collidedOnce = false;
-
+			SetDirty(false);
 		}
 		//Delete if goes past player
 		if (Transform->GetLocalPosition().y > GetScreenHeight())
@@ -108,13 +110,21 @@ void BallActor::Update(double deltaTime)
 
 void BallActor::OnCollision(Actor* other)
 {
-	
-	if (!(dynamic_cast<BallActor*>(other) != nullptr) && collidedOnce == false && Transform->GetLocalPosition().y == other->Transform->GetLocalPosition().y)
+	//Checks if the Actor its colliding with is not another ball actor
+	if (!(dynamic_cast<BallActor*>(other) != nullptr))
 	{
-	std::cout << "Collide" << std::endl;
-		Actor::Instantiate(new BallActor(), nullptr, ballSpawn, 0, "The BallActor");
-		collidedOnce = true;
-		goingDown = false;
-		goingUp = true;
+		//Checks if the collision is happening at a certian point inside of a collision circle
+		if (Transform->GetLocalPosition().y >= other->Transform->GetLocalPosition().y - 4 && Transform->GetLocalPosition().y <= other->Transform->GetLocalPosition().y + 4)
+		{
+			//Spawns a new ball if ball isn't dirty
+			if (IsDirty() == false)
+			{
+				std::cout << "Collide" << std::endl;
+				Actor::Instantiate(new BallActor(), nullptr, ballSpawn, 0, "The BallActor");
+			}
+			//Bounces ball
+			goingDown = false;
+			goingUp = true;
+		}
 	}
 }
