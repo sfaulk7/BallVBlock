@@ -7,8 +7,10 @@
 
 # MainObjective
 > As the Player your goal is to keep as much balls up into the area as possible.
+> Your score will go up by 1 point for each ball that you hit.
 > In order to do this you will have to use your rectangle that you control and your movement to keep the balls up.
-> If all of the balls exit the window then the game is over and you have lost.
+> If a ball exits the window before you hit one, the game is over.
+> If 10 balls exit the game, then the game is over.
 
 # DesignPillars
 > BallVBlock is a fast paced arcade game that takes inspiration from the hit 1986 game "Arkanoid" developed by Taito and Imagine Software and published by Romstar.
