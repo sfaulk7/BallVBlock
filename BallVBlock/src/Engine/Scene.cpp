@@ -29,7 +29,7 @@
 	bool Scene::RemoveActor(Actor* actor)
 	{
 		//return m_actors*->Remove(actor);
-		m_actorsToBeRemoved.Remove(actor);
+		m_actors.Remove(actor);
 
 		return true;
 	}

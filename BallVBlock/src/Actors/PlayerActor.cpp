@@ -3,6 +3,7 @@
 #include "Engine/Transform2D.h"
 #include "Engine/Actor.h"
 #include "Engine/Collision/CircleCollider.h"
+#include <iostream>
 
 PlayerActor::PlayerActor()
 {
@@ -65,10 +66,10 @@ void PlayerActor::OnCollision(Actor* other)
 {
 	if (other->Transform->GetLocalPosition().y >= this->Transform->GetLocalPosition().y - 4 && other->Transform->GetLocalPosition().y <= this->Transform->GetLocalPosition().y + 4)
 	{
+		std::cout << "Collide PLAYER" << std::endl;
 		if (other->IsDirty() == false)
 		{
 			m_score += 1;
-			other->SetDirty(true);
 		}
 	}
 }
