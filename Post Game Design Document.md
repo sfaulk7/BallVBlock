@@ -9,7 +9,7 @@
 > As the Player your goal is to keep as much balls up into the area as possible.
 > Your score will go up by 1 point for each ball that you hit.
 > In order to do this you will have to use your rectangle that you control and your movement to keep the balls up.
-> If a ball exits the window before you hit one, the game is over.
+> If a ball exits the window before you hit one, a new one will spawn in.
 > If 10 balls exit the game, then the game is over.
 
 # DesignPillars
